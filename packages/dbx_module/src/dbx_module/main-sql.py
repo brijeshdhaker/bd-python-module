@@ -1,6 +1,6 @@
 from databricks.sql.client import Connection, List, Row
 import os
-from com.example.databricks.helpers import get_connection_personal_access_token, select_nyctaxi_trips
+from dbx_module.helpers import get_connection_personal_access_token, select_nyctaxi_trips
 
 #
 connection: Connection = get_connection_personal_access_token(

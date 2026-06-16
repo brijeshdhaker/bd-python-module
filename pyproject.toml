@@ -13,7 +13,7 @@ maintainers = [
   { name = "Brijesh K Dhaker", email = "brijeshdhaker@gmail.com" }
 ]
 readme = "README.md"
-license = "GPL-3.0"
+#license = "GPL-3.0"
 
 requires-python = ">=3.12"
 
@@ -35,7 +35,7 @@ dev = [
 ]
 
 [project.scripts]
-bd_crewai_module = "com.example.ai.apps.crewai.main:run"
+#main = "com.example.ai.apps.crewai.main:run"
 
 #
 [project.urls]
