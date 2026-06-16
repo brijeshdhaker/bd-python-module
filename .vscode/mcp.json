@@ -1,0 +1,41 @@
+{
+	"inputs": [],
+	"servers": {
+		"databricks-sql": {
+			"type": "http",
+			"url": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/api/2.0/mcp/sql",
+			"headers": {
+				"Authorization": "Bearer eyJraWQiOiI2NDZiZWZkNGY5NjYwMTdiNjk1MjRjOTRlMjcxNzljY2YyZmRlZDU1ZGJiMzQ5N2UwZjEwM2EwMzljZjI2ODU3IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJjbGllbnRfaWQiOiI3MWMzOTVmMS0zYjJhLTQyMzQtOTE5NC04NmIwZTI4MDUyNjIiLCJzY29wZSI6ImFsbC1hcGlzIiwiaWRtIjoiQ0FFUUFRPT0iLCJpc3MiOiJodHRwczovL2FjY291bnRzLmNsb3VkLmRhdGFicmlja3MuY29tL29pZGMvYWNjb3VudHMvZWVlOGNhNjUtNTZhMi00Y2Q1LWFhZTQtOGVkYzRhMTllNTk1IiwiYXVkIjoiZWVlOGNhNjUtNTZhMi00Y2Q1LWFhZTQtOGVkYzRhMTllNTk1Iiwic3ViIjoiNzFjMzk1ZjEtM2IyYS00MjM0LTkxOTQtODZiMGUyODA1MjYyIiwiaWF0IjoxNzc5OTAwOTEzLCJleHAiOjE3Nzk5MDQ1MTMsImp0aSI6IjNiMzZkMjAwLWY0ZTQtNGM1ZC04ZWIyLWMwZWM1MmU5ZDUzZiJ9.xiN_uA5rB_-tA6nEfPJald7_tkZQbXbigelyRNKRkNm65fI6UWQ6igyhtuuQTK9ofOO-Jauo5gC-O7550fcxAbyQ6TNY6MLoT-N-SWYaKf4ripndVW5tP4BRVQLsctLW139cemBUIsYsdetDwwS4ghsSiSHv3vyNzJPgHxgqYn7K83nwB0xLutf_eJJ40cswz6GUOs1JL7xXWYOezqyvpx_s6itqWxqh-LpRBHwdisA8P4ZPOPQpuXL-g07Ujd1PIxFJ-GyHYAXJKXo0b6K2iJUZBiseJ-vn16jZcLc94aLQ7fH0QcZ85DjHkTqfI3Gjn-4eYavjM8mLttFcecugoA"
+			}
+		},
+		"microsoft/playwright-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest"
+			],
+			//"gallery": "https://api.mcp.github.com",
+			//"version": "0.0.1-seed"
+		},
+		"docs-langchain": {
+			"url": "https://docs.langchain.com/mcp"
+		},
+		"weather-server-mcp": {
+			"url": "http://127.0.0.1:8011/mcp"
+		},
+		"email-server-mcp": {
+			"url": "http://127.0.0.1:8000/mcp"
+		},
+		"sql-server-mcp": {
+			"type": "stdio",
+			"command": "${workspaceFolder}/.venv/bin/python",
+			"args": [
+				"${workspaceFolder}/src/main/py/com/example/ai/mcp/mysqlserver.py"
+			],
+			"env": {
+				"WORK_DIR": "${workspaceFolder}",
+				"PYTHONPATH": "${workspaceFolder}/src/main/py"
+			},
+		}
+	}
+}

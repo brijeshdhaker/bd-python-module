@@ -1,0 +1,22 @@
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12"]
+build-backend = "uv_build"
+
+[project]
+name = "dbx-module"
+description = "dbx-module"
+version = "0.1.0"
+readme = "README.md"
+
+dependencies = [
+    "databricks-connect>=17.3.10",
+    "databricks-dlt",
+    "databricks-langchain>=0.19.0",
+    "databricks-sdk[notebook]>=0.113.0",
+    "databricks-sql-connector>=4.2.6",
+    "databricks-sqlalchemy>=2.0.9",
+    #"unitycatalog-ai[databricks]>=0.3.2",
+]
+
+
+[tool.uv.sources]

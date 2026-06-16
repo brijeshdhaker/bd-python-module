@@ -1,0 +1,19 @@
+[mysqld]
+;
+# 0: Table names are stored exactly as specified in the CREATE TABLE query and are case-sensitive (Default for Linux).
+# 1: Names are converted to lowercase internally. Comparisons are case-insensitive (Default for Windows).
+# 2: Names retain their original casing in metadata. Comparisons are case-insensitive. Works only on case-insensitive file systems (like Windows/MacOS).
+;
+lower_case_table_names=0
+;
+max_connections=250
+;
+bind_address=0.0.0.0
+;
+character-set-server=UTF8MB4
+;
+collation-server=utf8mb4_unicode_ci
+;
+host_cache_size=0
+;
+sql-mode=PIPES_AS_CONCAT

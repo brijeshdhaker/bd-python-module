@@ -1,0 +1,17 @@
+[build-system]
+requires = ["uv-build"]
+build-backend = "uv_build"
+
+[project]
+name = "app-module"
+version = "0.1.0"
+readme = "README.md"
+
+dependencies = [
+    "core-module", # Declare dependency on the peer module
+    "api-module"
+]
+
+[tool.uv.sources]
+core-module = { workspace = true } # Tells uv to look inside the workspace
+api-module = { workspace = true }

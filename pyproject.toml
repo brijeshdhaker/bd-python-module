@@ -1,0 +1,61 @@
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12"]
+build-backend = "uv_build"
+
+
+[project]
+name = "bd_python_module"
+description = "bd_python_module"
+version = "0.1.0"
+keywords = ["spark", "deltalake", "openai", "mysql"]
+authors = [{ name = "Brijesh K Dhaker", email = "brijeshdhaker@gmail.com" }]
+maintainers = [
+  { name = "Brijesh K Dhaker", email = "brijeshdhaker@gmail.com" }
+]
+readme = "README.md"
+license = "GPL-3.0"
+
+requires-python = ">=3.12"
+
+dependencies = [
+    "core_module",
+    "api_module",
+    "app_module", 
+    "tqdm>=4,<5"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipython-sql>=0.5.0",
+    "ipywidgets>=8.1.8",
+    "jupysql>=0.11.1",
+    "ipykernel>=7.2.0",
+    "ipywidgets>=8.1.8",
+    "pytest"
+]
+
+[project.scripts]
+bd_crewai_module = "com.example.ai.apps.crewai.main:run"
+
+#
+[project.urls]
+Homepage = "https://example.com"
+Documentation = "https://readthedocs.org"
+Repository = "https://github.com/me/spam.git"
+Issues = "https://github.com/me/spam/issues"
+Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.uv.sources]
+core_module = { workspace = true }
+api_module = { workspace = true }
+app_module = { workspace = true }
+dbx_module = { workspace = true }
+dqx_module = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+exclude = [
+    "packages/langchain_module",
+    "packages/crewai_module",
+    "packages/langchain_module",
+]

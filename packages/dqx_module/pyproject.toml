@@ -1,0 +1,16 @@
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12"]
+build-backend = "uv_build"
+
+[project]
+name = "dqx-module"
+description = "dqx-module"
+version = "0.1.0"
+readme = "README.md"
+
+dependencies = [
+    "databricks-labs-dqx"
+]
+
+
+[tool.uv.sources]
