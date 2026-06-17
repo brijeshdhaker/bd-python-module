@@ -292,16 +292,14 @@ dependencies = [
     { name = "api-module" },
     { name = "app-module" },
     { name = "core-module" },
-    { name = "tqdm" },
-]
-
-[package.optional-dependencies]
-dev = [
+    { name = "dbx-module" },
+    { name = "dqx-module" },
     { name = "ipykernel" },
     { name = "ipython-sql" },
     { name = "ipywidgets" },
     { name = "jupysql" },
     { name = "pytest" },
+    { name = "tqdm" },
 ]
 
 [package.metadata]
@@ -309,11 +307,13 @@ requires-dist = [
     { name = "api-module", editable = "packages/api_module" },
     { name = "app-module", editable = "packages/app_module" },
     { name = "core-module", editable = "packages/core_module" },
-    { name = "ipykernel", marker = "extra == 'dev'", specifier = ">=7.2.0" },
-    { name = "ipython-sql", marker = "extra == 'dev'", specifier = ">=0.5.0" },
-    { name = "ipywidgets", marker = "extra == 'dev'", specifier = ">=8.1.8" },
-    { name = "jupysql", marker = "extra == 'dev'", specifier = ">=0.11.1" },
-    { name = "pytest", marker = "extra == 'dev'" },
+    { name = "dbx-module", editable = "packages/dbx_module" },
+    { name = "dqx-module", editable = "packages/dqx_module" },
+    { name = "ipykernel", specifier = ">=7.2.0" },
+    { name = "ipython-sql", specifier = ">=0.5.0" },
+    { name = "ipywidgets", specifier = ">=8.1.8" },
+    { name = "jupysql", specifier = ">=0.11.1" },
+    { name = "pytest" },
     { name = "tqdm", specifier = ">=4,<5" },
 ]
 provides-extras = ["dev"]
@@ -766,7 +766,7 @@ wheels = [
 
 [[package]]
 name = "databricks-connect"
-version = "18.3.0"
+version = "18.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "databricks-sdk" },
@@ -784,7 +784,7 @@ dependencies = [
     { name = "zstandard" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/29/b3/09affa5eab2bf2c6ffa8d18043dff21aed1477b9f662a1bc0ceed8a5cc2b/databricks_connect-18.3.0-py2.py3-none-any.whl", hash = "sha256:78fd8ea26b9d97a87e6d2c3a91daa482f3e0727bcc2d65157548f696c872d38d", size = 2933711, upload-time = "2026-06-16T12:48:25.218Z" },
+    { url = "https://files.pythonhosted.org/packages/e9/06/02419ceaa636d91e39cda4152edd9594cdf7a256e703b2d2f0e7510a88b4/databricks_connect-18.2.0-py2.py3-none-any.whl", hash = "sha256:55602fdab8f8f0637813a917ec06bb73d623b6014a2e1642e05ad3d5553b18bf", size = 2894491, upload-time = "2026-05-06T14:24:54.595Z" },
 ]
 
 [[package]]
@@ -1001,7 +1001,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "databricks-connect", specifier = ">=17.3.10" },
+    { name = "databricks-connect", specifier = "<=18.2.0" },
     { name = "databricks-dlt" },
     { name = "databricks-langchain", specifier = ">=0.19.0" },
     { name = "databricks-sdk", extras = ["notebook"], specifier = ">=0.113.0" },
@@ -1080,10 +1080,14 @@ version = "0.1.0"
 source = { editable = "packages/dqx_module" }
 dependencies = [
     { name = "databricks-labs-dqx" },
+    { name = "dbx-module" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "databricks-labs-dqx" }]
+requires-dist = [
+    { name = "databricks-labs-dqx" },
+    { name = "dbx-module", editable = "packages/dbx_module" },
+]
 
 [[package]]
 name = "et-xmlfile"
