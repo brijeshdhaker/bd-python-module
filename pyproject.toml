@@ -20,7 +20,9 @@ requires-python = ">=3.12"
 dependencies = [
     "core_module",
     "api_module",
-    "app_module", 
+    "app_module",
+    "dbx_module",
+    "dqx_module", 
     "tqdm>=4,<5"
 ]
 
@@ -30,7 +32,6 @@ dev = [
     "ipywidgets>=8.1.8",
     "jupysql>=0.11.1",
     "ipykernel>=7.2.0",
-    "ipywidgets>=8.1.8",
     "pytest"
 ]
 

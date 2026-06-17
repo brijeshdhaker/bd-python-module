@@ -52,6 +52,7 @@ uv pip install dist/api_module-0.1.0-py3-none-any.whl
 uv pip install dist/app_module-0.1.0-py3-none-any.whl
 uv pip install dist/dbx_module-0.1.0-py3-none-any.whl
 uv pip install dist/dqx_module-0.1.0-py3-none-any.whl
+uv pip install dist/bd_python_module-0.1.0-py3-none-any.whl
 
 uv tool install dist/bd_notebooks_module-1.0.0-py3-none-any.whl
 

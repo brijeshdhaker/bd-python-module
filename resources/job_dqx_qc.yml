@@ -27,7 +27,7 @@ resources:
           #serverless: {}
           environment_key: default     # Link the task her
           notebook_task:
-            notebook_path: ../notebooks/databricks/sample_notebook.ipynb
+            notebook_path: ../packages/dbx_module/src/dbx_module/sample_notebook.ipynb
 
         #
         #
@@ -56,7 +56,7 @@ resources:
           depends_on:
             - task_key: notebook_task
           python_wheel_task:
-            package_name: databricks_dqx_app
+            package_name: dbx_module
             entry_point: pywhl-main
             parameters:
               - "--catalog"

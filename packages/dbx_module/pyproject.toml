@@ -9,7 +9,7 @@ version = "0.1.0"
 readme = "README.md"
 
 dependencies = [
-    "databricks-connect>=17.3.10",
+    "databricks-connect<=18.2.0",
     "databricks-dlt",
     "databricks-langchain>=0.19.0",
     "databricks-sdk[notebook]>=0.113.0",

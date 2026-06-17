@@ -7,11 +7,11 @@ resources:
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true
-      root_path: "../databricks_dqx_app"
+      root_path: "../packages/dbx_module/src/dbx_module"
 
       libraries:
         - glob:
-            include: ../databricks_dqx_app/etl/transformations/**
+            include: ../packages/dbx_module/src/dbx_module/etl/transformations/**
 
       environment:
         dependencies:
