@@ -79,3 +79,13 @@ python -m com.example.ai.apps.crewai.main
 
 python dist/bd_notebooks_module-1.0.0.zip --Host localhost --App hello_py
 ````
+
+```bash
+
+Running pytest with args: ['-p', 'vscode_pytest', '--rootdir=/home/brijeshdhaker/IdeaProjects/bd-python-module', '/home/brijeshdhaker/IdeaProjects/bd-python-module/packages/dbx_module/tests/sample_taxis_test.py::test_find_all_taxis']
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.0, pluggy-1.6.0
+rootdir: /home/brijeshdhaker/IdeaProjects/bd-python-module
+configfile: packages/dbx_module/pyproject.toml
+plugins: anyio-4.14.0, langsmith-0.8.16
+```

@@ -23,18 +23,19 @@ dependencies = [
     "app_module",
     "dbx_module",
     "dqx_module", 
+    "ai_module",
     "tqdm>=4,<5",
     #
-    "ipython-sql>=0.5.0",
-    "ipywidgets>=8.1.8",
-    "jupysql>=0.11.1",
-    "ipykernel>=7.2.0",
     "pytest"
 ]
 
 [project.optional-dependencies]
 dev = [
 
+]
+
+test = [
+    "pytest"
 ]
 
 [project.scripts]
@@ -54,11 +55,11 @@ api_module = { workspace = true }
 app_module = { workspace = true }
 dbx_module = { workspace = true }
 dqx_module = { workspace = true }
+ai_module = { workspace = true}
 
+#
 [tool.uv.workspace]
 members = ["packages/*"]
 exclude = [
-    "packages/langchain_module",
-    "packages/crewai_module",
-    "packages/langchain_module",
+    "packages/test_module",
 ]
