@@ -576,18 +576,15 @@ dependencies = [
     { name = "core-module" },
     { name = "dbx-module" },
     { name = "dqx-module" },
-    { name = "pytest" },
     { name = "tqdm" },
-]
-
-[package.optional-dependencies]
-test = [
-    { name = "pytest" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "coverage" },
+]
+test = [
+    { name = "pytest" },
 ]
 
 [package.metadata]
@@ -598,14 +595,13 @@ requires-dist = [
     { name = "core-module", editable = "packages/core_module" },
     { name = "dbx-module", editable = "packages/dbx_module" },
     { name = "dqx-module", editable = "packages/dqx_module" },
-    { name = "pytest" },
-    { name = "pytest", marker = "extra == 'test'" },
     { name = "tqdm", specifier = ">=4,<5" },
 ]
-provides-extras = ["dev", "test"]
+provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "coverage", specifier = ">=7.14.1" }]
+test = [{ name = "pytest" }]
 
 [[package]]
 name = "beautifulsoup4"

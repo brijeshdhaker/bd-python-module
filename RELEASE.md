@@ -19,9 +19,13 @@ uv pip install --python 3.11.15 \
 pip download -d dist cowsay==6.1
 
 # Install using uv pacakage manager
-```
+```bash
+
 uv init 
 uv init testing-demo --package
+
+# 
+bash
 uv add --dev pytest
 
 #
@@ -38,6 +42,8 @@ uv run coverage report -m
 #
 uv run pytest
 uv run pytest -v
+
+```
 
 #
 uv sync 
