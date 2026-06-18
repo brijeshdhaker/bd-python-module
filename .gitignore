@@ -80,6 +80,7 @@ databricks-tools-core/tests/integration/pdf/generated_pdf/
 
 # Python cache
 __pycache__/
+.pytest_cache
 windows_info.txt
 
 # 

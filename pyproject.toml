@@ -25,7 +25,14 @@ dependencies = [
     "dqx_module", 
     "ai_module",
     "tqdm>=4,<5",
-    #
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.14.1",
+]
+
+test = [
     "pytest"
 ]
 
@@ -34,9 +41,6 @@ dev = [
 
 ]
 
-test = [
-    "pytest"
-]
 
 [project.scripts]
 #main = "com.example.ai.apps.crewai.main:run"
@@ -63,3 +67,8 @@ members = ["packages/*"]
 exclude = [
     "packages/test_module",
 ]
+
+
+
+[tool.pytest.ini_options]
+addopts = "--maxfail=1"

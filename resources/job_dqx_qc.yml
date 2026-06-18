@@ -89,5 +89,5 @@ resources:
               #
               # This value is automatically rewritten to the fully qualified remote path.
               - ../dist/cowsay-*.whl
-              - ../dist/*.whl
-              - databricks-labs-dqx
+              - ../dist/dbx_module-0.1.0-py3-none-any.whl
+              # - databricks-labs-dqx

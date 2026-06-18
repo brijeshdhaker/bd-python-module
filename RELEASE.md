@@ -21,6 +21,23 @@ pip download -d dist cowsay==6.1
 # Install using uv pacakage manager
 ```
 uv init 
+uv init testing-demo --package
+uv add --dev pytest
+
+#
+uv run pytest tests/test_calculator.py
+uv run pytest tests/test_calculator.py::test_add
+uv run pytest -k "divide"
+
+#
+uv add --dev coverage
+uv run coverage run -m pytest
+uv run coverage report
+uv run coverage report -m
+
+#
+uv run pytest
+uv run pytest -v
 
 #
 uv sync 

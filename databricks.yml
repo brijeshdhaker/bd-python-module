@@ -39,7 +39,7 @@ targets:
       schema: default
     workspace:
       host: https://dbc-ad78fc43-bcc0.cloud.databricks.com
-      root_path: /Workspace/Users/${workspace.current_user.userName}/apps/databricks-dqx-app
+      root_path: /Workspace/Users/${workspace.current_user.userName}/apps/bd_python_module
       
   ## Optionally, there could be 'staging' or 'prod' targets here.
   prod:
@@ -48,7 +48,7 @@ targets:
       schema: default  
     workspace:
       host: https://dbc-ad78fc43-bcc0.cloud.databricks.com
-      root_path: /Workspace/Users/${workspace.current_user.userName}/apps/databricks-dqx-app
+      root_path: /Workspace/Users/${workspace.current_user.userName}/apps/bd_python_module
     permissions:
       - user_name: brijeshdhaker@gmail.com
         level: CAN_MANAGE
