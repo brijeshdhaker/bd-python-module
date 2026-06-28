@@ -1,8 +1,10 @@
+```bash
+
 #
 python -m ensurepip --upgrade
 
 # serverless
-uv venv --python 3.12.3
+uv venv --python 3.12.13
 
 #
 pip install -e .
@@ -10,7 +12,7 @@ pip install -e .
 # To include development and testing tools specified under your optional blocks, run:
 pip install -e .[dev]
 
-uv pip install --python 3.11.15 \
+uv pip install --python 3.12.13 \
     -e "./databricks-tools-core" \
     -e "./databricks-builder-app" \
     -e "./databricks-mcp-server" \
@@ -19,13 +21,14 @@ uv pip install --python 3.11.15 \
 pip download -d dist cowsay==6.1
 
 # Install using uv pacakage manager
-```bash
-
 uv init 
 uv init testing-demo --package
 
+#
+uv run pytest
+uv run pytest -v
+
 # 
-bash
 uv add --dev pytest
 
 #
@@ -38,12 +41,6 @@ uv add --dev coverage
 uv run coverage run -m pytest
 uv run coverage report
 uv run coverage report -m
-
-#
-uv run pytest
-uv run pytest -v
-
-```
 
 #
 uv sync 
@@ -82,7 +79,8 @@ uv tool install dist/bd_notebooks_module-1.0.0-py3-none-any.whl
 uv run -m zipfile -c dist/bd_notebooks_module-1.0.0.zip src/main/py/*
 
 uv pip freeze > requirments.txt
-```
+
+
 
 # Install Using Pip
 python -m pip install --upgrade build
@@ -96,12 +94,15 @@ python -m com.example.app
 
 python -m com.example.ai.apps.crewai.main
 
+```
+
 #
 ## Run Python __main__.py get executed
 ```bash
 
 python dist/bd_notebooks_module-1.0.0.zip --Host localhost --App hello_py
-````
+
+```
 
 ```bash
 
@@ -111,4 +112,5 @@ platform linux -- Python 3.12.13, pytest-9.1.0, pluggy-1.6.0
 rootdir: /home/brijeshdhaker/IdeaProjects/bd-python-module
 configfile: packages/dbx_module/pyproject.toml
 plugins: anyio-4.14.0, langsmith-0.8.16
+
 ```

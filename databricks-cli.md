@@ -30,16 +30,7 @@ databricks auth env --profile databricks-cli
 # Alternatively, test access by listing workspace roots
 ``` bash
 
-databricks fs cat dbfs:/Workspace/Users/brijeshdhaker@gmail.com/
-databricks fs cp
-
-databricks fs ls dbfs:/Workspace/Users/brijeshdhaker@gmail.com/
-databricks fs ls dbfs:/Volumes/workspace/default/dbx_volume/
-databricks fs ls dbfs:/databricks-datasets
-
-databricks fs mkdir
-
-databricks fs rm
+databricks fs ls dbfs:/
 
 ```
 # Login to Workspace
@@ -62,7 +53,7 @@ databricks current-user me --profile databricks-cli
 databricks service-principals list -p databricks-cli
 ```
 
-#
+# Unity Catalog
 ```bash
 
 databricks functions list data_quality default --output json
@@ -76,6 +67,13 @@ databricks catalogs delete --name dqx --force
 #
 databricks workspace list /Workspace/Users/brijeshdhaker@gmail.com/apps --profile databricks-cli
 
+# Upload file
+databricks workspace import --file ./app/resources/dqx/config.yml /Workspace/Applications/dqx/config.yml --format AUTO --overwrite
+
+# Upload folder
+databricks workspace import --src-path "app/resources/dqx/dqx_functions" --target-path "/Users/ybrijeshdhaker@gmail.com/example.com" --format SOURCE --overwrite
+
+
 # Download the app files to your computer:
 databricks workspace export-dir /Workspace/Users/brijeshdhaker@gmail.com/apps/bd_dqx_module . --profile databricks-cli
 
@@ -88,6 +86,8 @@ databricks sync --watch . /Workspace/Users/brijeshdhaker@gmail.com/apps/bd_dqx_m
 ### Databricks Bundle Deploymnet
 #
 ``` bash
+databricks clusters spark-versions
+databricks clusters list
 
 #### Validate your syntax: Ensure there are no structural errors in your YAML configuration.
 databricks bundle validate
@@ -99,8 +99,21 @@ databricks bundle deploy -t dev -p databricks-cli
 #### Destroy Lakebase (does NOT affect the app)
 databricks bundle destroy --auto-approve --profile databricks-cli
 
+# Binding
+databricks bundle deployment bind lakebase dqx-studio-lakebase -t dev
+databricks bundle deployment bind main_schema dqx.dqx_studio -t dev
+databricks bundle deployment bind tmp_schema dqx.dqx_studio_tmp -t dev
+databricks bundle deployment bind wheels dqx.dqx_studio.wheels -t dev
+
+
 #### Trigger Remote Job
 databricks bundle run --target dev job_pipeline_dqx_qc
+
+# Unbinding
+databricks bundle deployment unbind lakebase -t dev
+databricks bundle deployment unbind wheels -t dev
+databricks bundle deployment unbind tmp_schema -t dev
+databricks bundle deployment unbind main_schema -t dev
 
 ```
 
@@ -126,6 +139,29 @@ databricks apps delete dqx-studio --profile databricks-cli
 
 ```
 
+#
+```bash
+
+#
+databricks workspace import --file ./app/resources/dqx/config.yml /Workspace/Applications/dqx/config.yml --format AUTO --overwrite
+
+#
+databricks fs cp app/resources/dqx/rules/ dbfs:/Volumes/workspace/raw/rules/ --recursive
+
+#
+databricks fs cp app/resources/dqx/rules/workspace.raw.department_rules.yml dbfs:/Volumes/workspace/raw/rules/
+databricks fs cp app/resources/dqx/rules/workspace.raw.employee_rules.yml dbfs:/Volumes/workspace/raw/rules/
+databricks fs cp app/resources/dqx/rules/workspace.raw.orders_rules.yml dbfs:/Volumes/workspace/raw/rules/
+databricks fs cp app/resources/dqx/rules/workspace.raw.users_rules.yml dbfs:/Volumes/workspace/raw/rules/ --overwrite
+
+
+
+#
+databricks fs cp app/resources/dqx/dqx_functions/ dbfs:/Volumes/workspace/raw/dqx_functions/ --recursive
+
+databricks fs cp dbfs:/Volumes/catalog_a/schema_a/volume_a/file.csv dbfs:/Volumes/catalog_b/schema_b/volume_b/target_dir/
+
+```
 # DQX Installation
 ```bash
 

@@ -15,7 +15,7 @@ maintainers = [
 readme = "README.md"
 #license = "GPL-3.0"
 
-requires-python = ">=3.12"
+requires-python = ">=3.12.13"
 
 dependencies = [
     "core_module",
