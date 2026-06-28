@@ -44,12 +44,12 @@
 # CREATE TABLE items (id bigserial PRIMARY KEY, embedding vector(3));
 # INSERT INTO items (embedding) VALUES ('[1,2,3]'), ('[4,5,6]');
 # SELECT * FROM items ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
-# SELECT * FROM items ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
+#
 
-include:
-  - path: ./docker-minio.yml
-  - path: ./docker-mysqlserver.yml
-  - path: ./docker-postgres.yml
+# include:
+#  - path: ./docker-minio.yml
+#  - path: ./docker-mysqlserver.yml
+#  - path: ./docker-postgres.yml
 
 #
 services:
@@ -158,9 +158,9 @@ services:
     ports:
       - "5432:5432"    
     volumes:
-      - sandbox_apps_path:/apps
+#      - sandbox_apps_path:/apps
       - /apps/sandbox/postgres/data:/var/lib/postgresql/data
-      - ./conf/postgres/my-postgres.conf:/etc/postgresql/postgresql.conf
+      - ./conf/postgres/postgres.conf:/etc/postgresql/postgresql.conf
       #- ./conf/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
       - type: tmpfs
         target: /dev/shm
