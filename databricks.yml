@@ -6,7 +6,8 @@ bundle:
   uuid: 60f10c32-9334-4f7f-9b11-d829da36a95f
 
 include:
-  - resources/*.yml
+  - resources/jobs/*.yml
+  - resources/pipeline/*.yml
 
 artifacts:
   python_artifact:
@@ -17,7 +18,7 @@ artifacts:
 variables:
   catalog:
     description: The catalog to use
-    default: "data_quality"
+    default: "workspace"
   schema:
     description: The schema to use
     default: "default"
@@ -35,7 +36,7 @@ targets:
     mode: development
     default: true
     variables:
-      catalog: data_quality
+      catalog: workspace
       schema: default
     workspace:
       host: https://dbc-ad78fc43-bcc0.cloud.databricks.com
@@ -44,7 +45,7 @@ targets:
   ## Optionally, there could be 'staging' or 'prod' targets here.
   prod:
     variables:
-      catalog: data_quality
+      catalog: workspace
       schema: default  
     workspace:
       host: https://dbc-ad78fc43-bcc0.cloud.databricks.com

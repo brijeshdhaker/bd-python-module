@@ -15,7 +15,7 @@ maintainers = [
 readme = "README.md"
 #license = "GPL-3.0"
 
-requires-python = ">=3.12.13"
+requires-python = "==3.12.13"
 
 dependencies = [
     "core_module",
@@ -29,6 +29,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pip>=25.0.1",
     "coverage>=7.14.1",
 ]
 

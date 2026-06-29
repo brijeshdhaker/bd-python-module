@@ -27,21 +27,21 @@ resources:
           #serverless: {}
           environment_key: default     # Link the task her
           notebook_task:
-            notebook_path: ../packages/dbx_module/src/dbx_module/sample_notebook.ipynb
+            notebook_path: ../../packages/dbx_module/src/dbx_module/sample_notebook.ipynb
 
         #
         #
         - task_key: cowsay-task
           environment_key: default
           spark_python_task:
-            python_file: ../packages/dbx_module/src/dbx_module/cowsay-main.py        
+            python_file: ../../packages/dbx_module/src/dbx_module/cowsay-main.py        
         #
         #
         - task_key: spark_python_task
           depends_on:
             - task_key: notebook_task        
           spark_python_task:
-            python_file: ../packages/dbx_module/src/dbx_module/main.py
+            python_file: ../../packages/dbx_module/src/dbx_module/main.py
             parameters:
               - "--catalog"
               - "${var.catalog}"
@@ -88,6 +88,6 @@ resources:
               # or a Unity Catalog Volume.
               #
               # This value is automatically rewritten to the fully qualified remote path.
-              - ../dist/cowsay-*.whl
-              - ../dist/dbx_module-0.1.0-py3-none-any.whl
+              - ../../dist/cowsay-*.whl
+              - ../../dist/dbx_module-0.1.0-py3-none-any.whl
               # - databricks-labs-dqx

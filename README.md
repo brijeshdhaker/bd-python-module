@@ -1,4 +1,5 @@
-uv pip install databricks-connect==17.3.* --python /home/brijeshdhaker/IdeaProjects/uc-monorepo/.venv/bin/python
+databricks-connect==16.4.1
+uv pip install databricks-connect==17.3.* --python /home/brijeshdhaker/IdeaProjects/bd-python-module/.venv/bin/python
 
 uv build --all
 
