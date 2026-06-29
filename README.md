@@ -1,4 +1,12 @@
-databricks-connect==16.4.1
+
+home = /home/brijeshdhaker/snap/code/247/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin
+include-system-site-packages = false
+version = 3.12.13
+executable = /home/brijeshdhaker/snap/code/247/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12
+command = /home/brijeshdhaker/snap/code/247/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python -m venv /home/brijeshdhaker/IdeaProjects/bd-python-module/.venv
+
+
+uv pip install databricks-connect==16.4.1
 uv pip install databricks-connect==17.3.* --python /home/brijeshdhaker/IdeaProjects/bd-python-module/.venv/bin/python
 
 uv build --all
