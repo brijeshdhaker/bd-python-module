@@ -24,3 +24,17 @@ dependencies = [
 
 [tool.uv.sources]
 core-module = { workspace = true } # Tells uv to look inside the workspace
+
+
+[tool.pytest.ini_options]
+#addopts = "--maxfail=1"
+addopts = "--no-header"
+cache_dir = ".venv/pytest-cache"
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "anomaly: marks tests as anomaly detection tests",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+pythonpath = [
+    "src"
+]

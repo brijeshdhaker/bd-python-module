@@ -4,8 +4,8 @@ build-backend = "uv_build"
 
 
 [project]
-name = "bd_python_module"
-description = "bd_python_module"
+name = "bd-python-module"
+description = "bd-python-module"
 version = "0.1.0"
 keywords = ["spark", "deltalake", "openai", "mysql"]
 authors = [{ name = "Brijesh K Dhaker", email = "brijeshdhaker@gmail.com" }]
@@ -35,6 +35,7 @@ dev = [
 ]
 
 test = [
+    "pip~=26.0",  # required by databricks-labs-blueprint WheelsV2 which calls `pip wheel`; remove after blueprint migrates to uv
     "pytest"
 ]
 
@@ -71,6 +72,20 @@ exclude = [
 ]
 
 
-
 [tool.pytest.ini_options]
-addopts = "--maxfail=1"
+#addopts = "--maxfail=1"
+addopts = "--no-header"
+cache_dir = ".venv/pytest-cache"
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "anomaly: marks tests as anomaly detection tests",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+pythonpath = [
+    "src", 
+    "packages/core_module/src",
+    "packages/app_module/src",
+    "packages/api_module/src",
+    "packages/dbx_module/src",
+    "packages/dqx_module/src"
+]

@@ -44,7 +44,7 @@ def load_fixture(spark: SparkSession):
     """
     # __file__
     def _loader(filename: str):
-        path = pathlib.Path("packages/dbx_module/tests/conftest.py").parent.parent / "fixtures" / filename
+        path = pathlib.Path("tests/conftest.py").parent/"fixtures"/filename
         suffix = path.suffix.lower()
         if suffix == ".json":
             rows = json.loads(path.read_text())
