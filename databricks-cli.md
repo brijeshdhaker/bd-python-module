@@ -90,7 +90,7 @@ databricks clusters spark-versions
 databricks clusters list
 
 #### Validate your syntax: Ensure there are no structural errors in your YAML configuration.
-databricks bundle validate
+databricks bundle validate --profile databricks-cli
 
 #### Deploy/Update Lakebase only
 databricks bundle deploy --target dev --profile databricks-cli

@@ -2,8 +2,8 @@
 
 resources:
   pipelines:
-    lakeflow_pipeline_dqx_qc:
-      name: lakeflow_pipeline_dqx_qc
+    dbx_taxi_lakeflow:
+      name: dbx_taxi_lakeflow
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true
