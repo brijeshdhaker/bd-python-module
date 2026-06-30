@@ -2,7 +2,7 @@ import random
 import time
 from pydantic import EmailStr
 from ai_module.apps.chains.notice_extraction import NoticeEmailExtract
-from com.example.utils.logging_config import LOGGER
+from core_module.utils.logging_config import LOGGER
 
 def send_escalation_email(notice_email_extract: NoticeEmailExtract, escalation_emails: list[EmailStr]) -> None:
     """Simulate sending escalation emails"""

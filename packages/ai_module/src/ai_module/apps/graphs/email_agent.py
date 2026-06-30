@@ -6,7 +6,7 @@ from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
-from com.example.utils.logging_config import LOGGER
+from core_module.utils.logging_config import LOGGER
 
 # ...
 
