@@ -2,10 +2,10 @@ from typing import TypedDict
 from langgraph.graph import END, START, StateGraph
 from pydantic import EmailStr
 from com.example.utils.logging_config import LOGGER
-from com.example.ai.apps.chains.escalation_check import ESCALATION_CHECK_CHAIN
-from com.example.ai.apps.chains.notice_extraction import NOTICE_PARSER_CHAIN, NoticeEmailExtract
-from com.example.ai.apps.chains.binary_questions import BINARY_QUESTION_CHAIN
-from com.example.ai.apps.graphs.graph_utils import create_legal_ticket, send_escalation_email
+from ai_module.apps.chains.escalation_check import ESCALATION_CHECK_CHAIN
+from ai_module.apps.chains.notice_extraction import NOTICE_PARSER_CHAIN, NoticeEmailExtract
+from ai_module.apps.chains.binary_questions import BINARY_QUESTION_CHAIN
+from ai_module.apps.graphs.graph_utils import create_legal_ticket, send_escalation_email
 
 class WorkflowState(TypedDict):
     notice_message: str

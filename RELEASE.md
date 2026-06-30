@@ -92,7 +92,7 @@ python -m module_name.main
 python -m com.example.hello
 python -m com.example.app
 
-python -m com.example.ai.apps.crewai.main
+python -m ai_module.apps.crewai.main
 
 ```
 

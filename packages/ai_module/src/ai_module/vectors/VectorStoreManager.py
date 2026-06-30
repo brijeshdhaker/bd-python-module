@@ -11,8 +11,8 @@ from chromadb.config import Settings
 import uuid
 from typing import List, Dict, Any, Tuple
 from sklearn.metrics.pairwise import cosine_similarity
-from com.example.ai.loader.LoadManager import LoadManager
-from com.example.ai.embedding.EmbeddingManager import EmbeddingManager
+from ai_module.loader.LoadManager import LoadManager
+from ai_module.embedding.EmbeddingManager import EmbeddingManager
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.vectorstores import VectorStore, VectorStoreRetriever
 from langchain_huggingface import HuggingFaceEmbeddings

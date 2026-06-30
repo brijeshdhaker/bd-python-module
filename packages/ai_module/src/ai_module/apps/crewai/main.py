@@ -4,7 +4,7 @@ import warnings
 
 from datetime import datetime
 
-from com.example.ai.apps.crewai.crew import BdCrewaiModule
+from ai_module.apps.crewai.crew import BdCrewaiModule
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 

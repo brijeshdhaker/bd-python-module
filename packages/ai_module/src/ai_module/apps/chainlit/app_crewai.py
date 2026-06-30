@@ -7,7 +7,7 @@ from crewai.tools import BaseTool
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 import chainlit as cl
 from chainlit import run_sync
-from com.example.ai.config import create_memory
+from ai_module.config import create_memory
 
 load_dotenv(override=True)
 

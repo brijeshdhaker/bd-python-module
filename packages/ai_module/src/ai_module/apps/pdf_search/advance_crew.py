@@ -1,6 +1,6 @@
 from crewai import Crew, Agent, Task, Process, LLM
 from langchain_openai import ChatOpenAI
-from com.example.ai.apps.pdf_search.basic_crew import retrieval_action, generation_action
+from ai_module.apps.pdf_search.basic_crew import retrieval_action, generation_action
 
 def create_advanced_crew(vectorstore, status_callback=None):
     def retrieval_wrapper(question):

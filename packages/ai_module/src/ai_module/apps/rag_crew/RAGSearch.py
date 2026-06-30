@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from com.example.ai.loader.LoadManager import LoadManager
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
-from com.example.ai.LLMManager import LLMManager
+from ai_module.loader.LoadManager import LoadManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.LLMManager import LLMManager
 from langchain_community.document_loaders import PDFPlumberLoader
 
 #

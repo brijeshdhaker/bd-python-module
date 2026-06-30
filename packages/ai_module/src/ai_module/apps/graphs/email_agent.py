@@ -1,6 +1,6 @@
 import time
-from com.example.ai.apps.chains.notice_extraction import NoticeEmailExtract
-from com.example.ai.apps.graphs.notice_extraction import NOTICE_EXTRACTION_GRAPH
+from ai_module.apps.chains.notice_extraction import NoticeEmailExtract
+from ai_module.apps.graphs.notice_extraction import NOTICE_EXTRACTION_GRAPH
 from langchain_core.messages import AIMessage
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI

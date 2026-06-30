@@ -2,10 +2,10 @@
 # streamlit run src/main/py/com/example/ai/apps/pdf_search/app.py
 #
 import streamlit as st
-from com.example.ai.apps.pdf_search.basic_crew import create_crew,retrieval_action, generation_action
-from com.example.ai.loader.LoadManager import LoadManager
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
-from com.example.ai.LLMManager import LLMManager
+from ai_module.apps.pdf_search.basic_crew import create_crew,retrieval_action, generation_action
+from ai_module.loader.LoadManager import LoadManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.LLMManager import LLMManager
 
 
 st.set_page_config(

@@ -3,7 +3,7 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 import chromadb
 from chromadb.config import Settings
-from com.example.ai.vectors.ChromaVectorStore import ChromaVectorStore
+from ai_module.vectors.ChromaVectorStore import ChromaVectorStore
 
 class DesignInput(BaseModel):
     """Input schema for DesignlocateTool."""

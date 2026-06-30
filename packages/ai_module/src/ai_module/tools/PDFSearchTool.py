@@ -1,5 +1,5 @@
 from crewai_tools import PDFSearchTool
-from com.example.ai.config import create_rag_config, _llm_openai,_llm_ollama, _embedder_config_st
+from ai_module.config import create_rag_config, _llm_openai,_llm_ollama, _embedder_config_st
 
 #
 pdf_search_tool = PDFSearchTool(

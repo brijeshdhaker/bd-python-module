@@ -1,8 +1,8 @@
 import os
 from crewai import Crew, Agent, Task, Process, LLM
 from langchain_ollama import ChatOllama
-from com.example.ai.LLMManager import LLMManager
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.LLMManager import LLMManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
 
 def retrieval_action(question, store_mgr: VectorStoreManager):
     retriever = store_mgr.retriever(search_type="similarity", search_kwargs={"k": 5})

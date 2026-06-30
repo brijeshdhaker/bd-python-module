@@ -4,7 +4,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import Runnable
 from langchain_core.runnables import RunnableConfig
 from typing import cast
-from com.example.ai.LLMManager import LLMManager
+from ai_module.LLMManager import LLMManager
 import chainlit as cl
 
 

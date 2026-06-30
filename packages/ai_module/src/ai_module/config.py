@@ -1,13 +1,14 @@
+"""
+"""
 import os
 from dotenv import load_dotenv
-
-"""
-"""
 from crewai_tools.tools.rag import RagToolConfig, VectorDbConfig, ProviderSpec
 from crewai.rag.embeddings.providers.openai.types import OpenAIProviderSpec
 from crewai.rag.embeddings.providers.ollama.types import OllamaProviderSpec
 from crewai.rag.embeddings.providers.huggingface.types import HuggingFaceProviderSpec
 from crewai.rag.embeddings.providers.sentence_transformer.types import SentenceTransformerProviderSpec
+from ai_module.LLMManager import LLMManager
+from crewai import Memory
 
 load_dotenv()
 
@@ -19,7 +20,7 @@ _embedder_config_openai: OpenAIProviderSpec = {
     "config": {
         "model_name": os.environ["OPENAI_EMBEDDING_MODEL_ID"],
         "organization_id":"sandbox",
-        "api_base":"http://localhost:11434/v1",
+        "api_base": os.environ["OPENAI_API_BASE"],
         "api_version":"v1",
         "api_key":"ollama",
         "api_type":"ollama",
@@ -32,7 +33,7 @@ _embedder_config_ollama: OllamaProviderSpec = {
     "provider": "ollama",
     "config": {
         "model_name": os.environ["OPENAI_EMBEDDING_MODEL_ID"],
-        "url":"http://localhost:11434/v1"
+        "url": os.environ["OPENAI_API_BASE"]
     }
 }
 
@@ -62,12 +63,12 @@ _embedding_model_openai: OpenAIProviderSpec = {
     "provider": "openai",
     "config": {
         "model_name": os.environ["OPENAI_EMBEDDING_MODEL_ID"],
-        "organization_id":"sandbox",
-        "api_base":"http://localhost:11434/v1",
-        "api_version":"v1",
-        "api_key":"ollama",
-        "api_type":"ollama",
-        "dimensions":768,
+        "organization_id": "sandbox",
+        "api_base": os.environ["OPENAI_API_BASE"],
+        "api_version": "v1",
+        "api_key": "ollama",
+        "api_type": "ollama",
+        "dimensions": 768,
         "default_headers":{"X-Custom-Header": "ollama"}
     }
 }
@@ -76,7 +77,7 @@ _embedding_model_ollama: OllamaProviderSpec = {
     "provider": "ollama",
     "config": {
         "model_name": os.environ["OPENAI_EMBEDDING_MODEL_ID"],
-        "url":"http://localhost:11434/v1"
+        "url":os.environ["OPENAI_API_BASE"]
     }
 }
 
@@ -109,11 +110,12 @@ _vectordb_chromadb = VectorDbConfig = {
 }
 
 # LLMs
+# http://hostmaster.sandbox.net:11434/v1
 _llm_openai = dict(
     provider="openai",
     config=dict(
         model=os.environ["OPENAI_MODEL_NAME"],
-        base_url="http://localhost:11434/v1",
+        base_url=os.environ["OPENAI_API_BASE"], 
         max_tokens=4096,
         temperature=0.3,
         timeout=300,
@@ -122,11 +124,12 @@ _llm_openai = dict(
     ),
 )
 
+# http://hostmaster.sandbox.net:11434,
 _llm_ollama = dict(
     provider="ollama",
     config=dict(
-        model=os.environ["OPENAI_MODEL_NAME"],
-        base_url="http://localhost:11434",
+        model=os.environ["OLLAMA_MODEL"],
+        base_url=os.environ["OLLAMA_URL"],    
         temperature=0.3,
         max_tokens=4096,
         timeout=300,
@@ -186,9 +189,6 @@ _rag_tool_config = dict(
 )
 
 ## Memory
-from com.example.ai.LLMManager import LLMManager
-from crewai import Memory
-
 def create_memory(type: str = 'openai') -> Memory :
     _llm = LLMManager.create_llm(type)
     _embedder = _embedding_model_openai

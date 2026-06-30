@@ -1,7 +1,7 @@
 from crewai.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field,PrivateAttr
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
 from langchain_core.vectorstores import VectorStore
 #
 class DocumentQueryInput(BaseModel):

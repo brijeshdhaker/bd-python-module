@@ -2,7 +2,7 @@ import os
 from crewai import Agent, Crew, Process, Task
 from crewai.tools import tool
 from crewai_tools import MySQLSearchTool
-from com.example.ai.config import create_rag_config
+from ai_module.config import create_rag_config
 
 
 

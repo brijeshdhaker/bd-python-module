@@ -1,7 +1,7 @@
 import os
 import warnings
 import pymysql.cursors
-from com.example.ai.apps.mysql_chat.crew import ChatWithMysql
+from ai_module.apps.mysql_chat.crew import ChatWithMysql
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import uvicorn
@@ -79,4 +79,4 @@ async def query(question: str):
 
 def start():
     """Launched with `poetry run start`"""
-    uvicorn.run("com.example.ai.apps.mysql_chat.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("ai_module.apps.mysql_chat.main:app", host="0.0.0.0", port=8000, reload=True)

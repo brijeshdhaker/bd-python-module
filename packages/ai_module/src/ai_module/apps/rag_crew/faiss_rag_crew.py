@@ -2,9 +2,9 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-from com.example.ai.tools.faiss_ragtool import FAISSRagTool
+from ai_module.tools.faiss_ragtool import FAISSRagTool
 from langchain_community.document_loaders import PDFPlumberLoader
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
 
 @CrewBase
 class FAISSRagCrew:

@@ -3,7 +3,7 @@ import os
 from crewai_tools import TavilyExtractorTool
 from crewai_tools import PDFSearchTool
 from crewai_tools import ScrapeWebsiteTool
-from com.example.ai.config import create_rag_config
+from ai_module.config import create_rag_config
 
 def tavily_extractor(_urls: list[str]) :
     """

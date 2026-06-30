@@ -1,7 +1,7 @@
 import os
 from crewai import Crew, Agent, Task, Process, LLM
 from langchain_ollama import ChatOllama
-from com.example.ai.LLMManager import LLMManager
+from ai_module.LLMManager import LLMManager
 from langchain.messages import SystemMessage, HumanMessage, AIMessage
 
 # agent = LLMManager.get_agent()

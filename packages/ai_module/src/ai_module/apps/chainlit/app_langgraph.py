@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import ToolNode
 from langchain_core.runnables import RunnableConfig
 from langchain_core.messages import HumanMessage
-from com.example.ai.LLMManager import LLMManager
+from ai_module.LLMManager import LLMManager
 import chainlit as cl
 
 @tool

@@ -3,9 +3,9 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
-from com.example.ai.config import _rag_tool_config, _embedder_config_st
-from com.example.ai.LLMManager import LLMManager
-from com.example.ai.tools.ImageFetchTool import image_fetch_tool
+from ai_module.config import _rag_tool_config, _embedder_config_st
+from ai_module.LLMManager import LLMManager
+from ai_module.tools.ImageFetchTool import image_fetch_tool
 
 from pydantic import BaseModel, Field
 from typing import List, Dict

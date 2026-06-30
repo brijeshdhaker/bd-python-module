@@ -7,9 +7,9 @@ import numpy as np
 import pickle
 from typing import List, Any
 from sentence_transformers import SentenceTransformer
-from com.example.ai.embedding.EmbeddingManager import EmbeddingManager
-from com.example.ai.loader.LoadManager import LoadManager
-from com.example.ai.vectors.VectorStore import VectorStore
+from ai_module.embedding.EmbeddingManager import EmbeddingManager
+from ai_module.loader.LoadManager import LoadManager
+from ai_module.vectors.VectorStore import VectorStore
 from langchain_core.vectorstores import VectorStore
 import chromadb
 from chromadb.config import Settings

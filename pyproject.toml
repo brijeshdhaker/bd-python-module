@@ -45,7 +45,7 @@ dev = [
 
 
 [project.scripts]
-#main = "com.example.ai.apps.crewai.main:run"
+#main = "ai_module.apps.crewai.main:run"
 
 #
 [project.urls]

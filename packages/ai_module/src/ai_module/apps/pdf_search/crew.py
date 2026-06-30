@@ -1,8 +1,8 @@
 import os
 from crewai import Crew, Agent, Task, Process, LLM
 from langchain_ollama import ChatOllama
-from com.example.ai.LLMManager import LLMManager
-from com.example.ai.tools.router_tool import router_tool
+from ai_module.LLMManager import LLMManager
+from ai_module.tools.router_tool import router_tool
 
 llm = LLMManager.create_llm()
 

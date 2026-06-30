@@ -10,6 +10,7 @@ readme = "README.md"
 
 dependencies = [
     "core_module",
+    "composio>=0.17.1",
     "chainlit>=2.11.1",
     "chromadb>=1.1.1",
     "crewai-tools[mcp]>=1.14.3",

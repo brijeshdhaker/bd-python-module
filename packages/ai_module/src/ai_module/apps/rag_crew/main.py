@@ -1,7 +1,7 @@
 import warnings
-from com.example.ai.apps.rag_crew.tool_rag_crew import ToolRagCrew
-from com.example.ai.apps.rag_crew.pdf_knowledge_crew import PDFKnowledgeCrew
-from com.example.ai.apps.rag_crew.faiss_rag_crew import FAISSRagCrew
+from ai_module.apps.rag_crew.tool_rag_crew import ToolRagCrew
+from ai_module.apps.rag_crew.pdf_knowledge_crew import PDFKnowledgeCrew
+from ai_module.apps.rag_crew.faiss_rag_crew import FAISSRagCrew
 from dotenv import load_dotenv
 from datetime import datetime
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")

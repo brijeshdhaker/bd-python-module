@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List, Any
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
-from com.example.ai.embedding.EmbeddingManager import EmbeddingManager
+from ai_module.embedding.EmbeddingManager import EmbeddingManager
 
 class VectorStore(ABC):
     

@@ -1,3 +1,3 @@
-from com.example.ai.tools.DesignSearchTool import DesignSearchTool
+from ai_module.tools.DesignSearchTool import DesignSearchTool
 
 __all__ = ["DesignSearchTool"]

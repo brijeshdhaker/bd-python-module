@@ -1,5 +1,5 @@
 from datetime import datetime
-from com.example.ai.apps.design_crew.design_development import DesignDevelopment
+from ai_module.apps.design_crew.design_development import DesignDevelopment
 
 
 def trigger():

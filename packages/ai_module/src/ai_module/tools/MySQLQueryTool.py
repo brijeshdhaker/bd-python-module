@@ -18,7 +18,7 @@ class SQLQueryTool(BaseTool):
     def _run(self, query: str) -> str:
         try:
             #
-            from com.example.ai.apps.mysql_chat.main import mysql_connection
+            from ai_module.apps.mysql_chat.main import mysql_connection
             with mysql_connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 cursor.execute(query)
                 results = cursor.fetchall()

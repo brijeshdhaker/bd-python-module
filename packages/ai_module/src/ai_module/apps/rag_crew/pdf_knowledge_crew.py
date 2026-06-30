@@ -3,7 +3,7 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 from typing import List
-from com.example.ai.config import _embedder_config_st
+from ai_module.config import _embedder_config_st
 @CrewBase
 class PDFKnowledgeCrew:
 

@@ -8,7 +8,7 @@ from chromadb.config import Settings
 import uuid
 from typing import List, Dict, Any, Tuple
 from sklearn.metrics.pairwise import cosine_similarity
-from com.example.ai.loader.LoadManager import LoadManager
+from ai_module.loader.LoadManager import LoadManager
 
 #
 # model_name="sentence-transformers/all-mpnet-base-v2" // more accuracy
