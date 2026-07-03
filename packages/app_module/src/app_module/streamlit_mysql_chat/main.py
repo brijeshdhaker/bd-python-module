@@ -1,7 +1,7 @@
 import os
 import warnings
 import pymysql.cursors
-from ai_module.apps.mysql_chat.crew import ChatWithMysql
+from app_module.streamlit_mysql_chat.crew import ChatWithMysql
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import uvicorn
@@ -9,7 +9,7 @@ import uvicorn
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 #
-# fastapi dev src/main/py/com/example/ai/apps/mysql_chat/main.py
+# fastapi dev packages/app_module/src/app_module/streamlit_mysql_chat/main.py
 #
 schema_info = None
 mysql_connection = None

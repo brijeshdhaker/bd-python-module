@@ -9,10 +9,45 @@ include:
   - resources/jobs/*.yml
   - resources/pipeline/*.yml
 
+# These are any additional files or paths to include or exclude.
+# sync:
+#   include:
+#     - '<some-file-or-path-glob-to-include>'
+#     - '<another-file-or-path-glob-to-include>'
+#   exclude:
+#     - '<some-file-or-path-glob-to-exclude>'
+#     - '<another-file-or-path-glob-to-exclude>'
+#   paths:
+#     - '<some-file-or-path-to-synchronize>'
+
+# These are the default artifact settings if not otherwise overridden in
+# the targets top-level mapping.
 artifacts:
   python_artifact:
     type: whl
     build: uv build --wheel
+    path: .
+    dynamic_version: false
+    executable: bash    
+    files:
+      - source: string    
+
+# These are the permissions to apply to resources defined
+# in the resources mapping.
+# This is the identity to use to run the bundle
+run_as:
+  user_name: "brijeshdhaker@gmail.com"
+  # - service_principal_name: "71c395f1-3b2a-4234-9194-86b0e2805262"
+
+# These are the permissions to apply to resources defined
+# in the resources mapping.  CAN_CREATE CAN_VIEW CAN_RUN, CAN_MANAGE CAN_EDIT CAN_READ CAN_USE
+# permissions:
+#   - level: "CAN_MANAGE"
+#     group_name: "admins"
+#   - level: "CAN_MANAGE"
+#     user_name: "brijeshdhaker@gmail.com"
+#   - level: "CAN_MANAGE"
+#     service_principal_name: "211d31e8-a436-415a-b99c-541379021a3e"
 
 # Variable declarations. These variables are assigned in the dev/prod targets below.    
 variables:

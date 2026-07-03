@@ -7,17 +7,20 @@ name = "dbx-module"
 description = "dbx-module"
 version = "0.1.0"
 readme = "README.md"
+requires-python = ">=3.10,<3.13"
 
 dependencies = [
-    "databricks-connect>=17.3.11",
     "databricks-dlt",
+    "databricks-connect>=15.4,<15.5",
     "databricks-langchain>=0.14.0",
     "databricks-sdk[notebook]>=0.119.0",
-    "databricks-sql-connector[pyarrow]>=4.2.6",
+    "databricks-sql-connector[pyarrow]>=4.3.0",
     "databricks-sqlalchemy>=2.0.9",
-    #"unitycatalog-ai[databricks]>=0.3.2",
+    # "unitycatalog-ai[databricks]>=0.3.2",
 ]
 
+[project.scripts]
+pywhl-main = "dbx_module.main:main"
 
 [tool.uv.sources]
 

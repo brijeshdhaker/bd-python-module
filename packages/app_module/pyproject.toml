@@ -9,13 +9,19 @@ readme = "README.md"
 
 dependencies = [
     "core-module", # Declare dependency on the peer module
-    "api-module"
+    "api-module",
+    "composio<=0.17.1",
+    "chainlit>=2.11.1",
+    "streamlit>=1.57.0",
 ]
+
+[project.scripts]
+#main = "app_module.streamlit_mysql_chat.crewai.main:run"
+
 
 [tool.uv.sources]
 core-module = { workspace = true } # Tells uv to look inside the workspace
 api-module = { workspace = true }
-
 
 [tool.pytest.ini_options]
 #addopts = "--maxfail=1"

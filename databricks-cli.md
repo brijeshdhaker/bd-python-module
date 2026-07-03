@@ -219,3 +219,18 @@ databricks labs dqx workflows --profile databricks-cli
 databricks labs dqx open-dashboards --profile databricks-cli
 
 ```
+
+
+level, set to the name of the permission level. Allowed permission levels for each resource are the following:
+Alerts            : CAN_EDIT, CAN_MANAGE, CAN_READ, CAN_RUN
+Apps              : CAN_MANAGE, CAN_USE
+Clusters          : CAN_ATTACH_TO, CAN_MANAGE, CAN_RESTART
+Dashboards        : CAN_EDIT, CAN_MANAGE, CAN_RUN, CAN_READ*
+Database instances: CAN_MANAGE, CAN_USE, CAN_CREATE
+Genie spaces      : CAN_EDIT, CAN_MANAGE, CAN_RUN, CAN_VIEW
+Experiments       : CAN_EDIT, CAN_MANAGE, CAN_READ, CAN_RUN
+Jobs              : CAN_MANAGE, CAN_MANAGE_RUN, CAN_VIEW, IS_OWNER
+Models            : CAN_EDIT, CAN_MANAGE, CAN_MANAGE_STAGING_VERSIONS, CAN_MANAGE_PRODUCTION_VERSIONS, CAN_READ
+Pipelines         : CAN_MANAGE, CAN_RUN, CAN_VIEW, IS_OWNER
+Secret scopes     : READ, WRITE, MANAGE
+SQL warehouse     : CAN_MANAGE, CAN_USE, CAN_VIEW, CAN_MONITOR, IS_OWNER
