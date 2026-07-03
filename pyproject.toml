@@ -83,6 +83,7 @@ exclude = [
 addopts = "--no-header"
 cache_dir = ".venv/pytest-cache"
 filterwarnings = ["ignore::DeprecationWarning"]
+testpaths = ["tests"]
 markers = [
     "anomaly: marks tests as anomaly detection tests",
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",

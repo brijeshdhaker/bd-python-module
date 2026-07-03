@@ -1,5 +1,5 @@
-from com.example.ai.loader.LoadManager import LoadManager
-from com.example.ai.vectors.VectorStoreManager import VectorStoreManager
+from ai_module.loader.LoadManager import LoadManager
+from ai_module.vectors.VectorStoreManager import VectorStoreManager
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from pathlib import Path
