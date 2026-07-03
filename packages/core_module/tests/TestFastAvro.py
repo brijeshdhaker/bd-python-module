@@ -65,7 +65,7 @@ class TestFastAvro(unittest.TestCase):
     def test_avro_writer(self):
         #
         parsed_schema = parse_schema(self.schema)
-        with open('./resources/avro/weather.avro', 'wb') as out:
+        with open('conf/avro/weather.avro', 'wb') as out:
             writer(out, parsed_schema, self.records)
         
         fo = BytesIO()
@@ -77,14 +77,14 @@ class TestFastAvro(unittest.TestCase):
     #
     def test_avro_reader(self):
         buffer = BytesIO()
-        with open('./resources/avro/weather.avro', 'rb') as fo:
+        with open('conf/avro/weather.avro', 'rb') as fo:
             avro_reader = reader(fo)
             for record in avro_reader:
                 print(record)
 
     #
     def test_block_reader(self):
-        with open('./resources/avro/weather.avro', 'rb') as fo:
+        with open('conf/avro/weather.avro', 'rb') as fo:
             avro_blocks = block_reader(fo)
             for block in avro_blocks:
                 print(f"Processing block with {block.num_records} records.")
@@ -99,13 +99,13 @@ class TestFastAvro(unittest.TestCase):
     def test_json_writer(self):
         #
         parsed_schema = parse_schema(self.schema)
-        with open('./resources/json/records.json', 'w') as out:
+        with open('conf/json/records.json', 'w') as out:
             json_writer(out, parsed_schema, self.records)        
 
     #
     def test_json_reader(self):
         parsed_schema = parse_schema(self.schema)
-        with open('./resources/json/records.json', 'r') as fo:
+        with open('conf/json/records.json', 'r') as fo:
             reader = json_reader(fo, parsed_schema)
             for record in reader:
                 print(record)

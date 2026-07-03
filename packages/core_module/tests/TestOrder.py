@@ -37,3 +37,5 @@ class TestOrder(unittest.TestCase):
         # display_user_info(product_id="P123", price=99.99)
 
 
+if __name__ == '__main__':
+    unittest.main()  

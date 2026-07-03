@@ -44,3 +44,7 @@ class TestTransaction(unittest.TestCase):
         transaction = Transaction.random()
         record_value = str(transaction.to_delimited_text("|"))
         self.assertIsNotNone(record_value)
+
+
+if __name__ == '__main__':
+    unittest.main()  

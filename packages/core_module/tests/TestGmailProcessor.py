@@ -37,3 +37,7 @@ class TestGmailProcessor(unittest.TestCase):
         result = GmailProcessor.send(msg)
 
         self.assertIsNotNone(result, "Pass")
+
+
+if __name__ == '__main__':
+    unittest.main()        

@@ -24,4 +24,5 @@ class TestFaker(unittest.TestCase):
         self.assertIsNotNone(fake.currency_code())
         self.assertIsNotNone(fake.currency_name())
         
-        
+if __name__ == '__main__':
+    unittest.main()        
