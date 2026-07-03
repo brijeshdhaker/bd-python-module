@@ -1,6 +1,6 @@
 import unittest
-from com.example.models.User import User
-from com.example.utils.AvroUtils import load_avro_schema, load_avro_str, load_avro_json
+from core_module.models.User import User
+from core_module.utils.AvroUtils import load_avro_schema, load_avro_str, load_avro_json
 
 class TestAvroUtils(unittest.TestCase):
 

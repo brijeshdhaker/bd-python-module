@@ -1,5 +1,5 @@
 import unittest
-from com.example.utils.TimeUtils import TimeUtils
+from core_module.utils.TimeUtils import TimeUtils
 
 class TestTimeUtils(unittest.TestCase):
 

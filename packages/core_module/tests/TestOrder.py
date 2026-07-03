@@ -1,4 +1,4 @@
-from com.example.models.Order import Order
+from core_module.models.Order import Order
 import unittest
 from faker import Faker
 

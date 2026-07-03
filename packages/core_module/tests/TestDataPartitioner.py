@@ -1,6 +1,6 @@
 import unittest
-from com.example.models.User import User
-from com.example.kafka.DataPartitioner import DataPartitioner
+from core_module.models.User import User
+from core_module.kafka.DataPartitioner import DataPartitioner
 
 
 class TestDataPartitioner(unittest.TestCase):

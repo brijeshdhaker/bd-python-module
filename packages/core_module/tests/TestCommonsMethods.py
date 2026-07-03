@@ -1,5 +1,5 @@
 import unittest
-import com.example.utils.Commons as commons
+from core_module.utils.Commons as commons
 
 class TestCommonsMethods(unittest.TestCase):
 

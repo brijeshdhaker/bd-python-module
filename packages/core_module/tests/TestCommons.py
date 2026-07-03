@@ -1,5 +1,5 @@
 import unittest
-from com.example.utils.Commons import split_csv, split_csv_line, print_separator
+from core_module.utils.Commons import split_csv, split_csv_line, print_separator
 
 class TestCommons(unittest.TestCase):
     

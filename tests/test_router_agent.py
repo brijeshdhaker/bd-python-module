@@ -1,5 +1,5 @@
 from crewai import Crew
-from com.example.ai.apps.pdf_search.crew import (
+from ai_module.apps.pdf_search.crew import (
     Router_Agent, router_task, 
     Retriever_Agent, retriever_task, 
     Grader_agent, grader_task, 

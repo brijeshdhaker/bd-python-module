@@ -1,5 +1,5 @@
 import unittest
-from com.example.utils.GmailProcessor import GmailProcessor
+from core_module.utils.GmailProcessor import GmailProcessor
 from email.message import EmailMessage
 
 class TestGmailProcessor(unittest.TestCase):

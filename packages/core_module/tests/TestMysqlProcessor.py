@@ -1,5 +1,5 @@
 import unittest
-from com.example.utils.MysqlProcessor import MysqlProcessor
+from core_module.utils.MysqlProcessor import MysqlProcessor
 
 class TestMysqlProcessor(unittest.TestCase):
 
