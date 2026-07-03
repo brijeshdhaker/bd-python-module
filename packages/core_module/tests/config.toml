@@ -1,0 +1,3 @@
+[test_env]
+debug = true
+database_url = "sqlite:///:memory:"
