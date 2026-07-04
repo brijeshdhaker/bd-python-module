@@ -1,17 +1,17 @@
-from com.example.utils.SparkSessionManager import SparkSessionManager
-from com.example.utils.Logger import Logger
-from com.example.utils.SCDHandler import SCDHandler
-from com.example.ingestion.DataWriter import write_output
-
-from com.example.utils.SparkReadHandler import SparkReadHandler as readHandler
+from core_module.utils.Logger import Logger
+from dbx_module.utils.DataWriter import write_output
+from dbx_module.utils.SCDHandler import SCDHandler
+from dbx_module.utils.SparkSessionManager import SparkSessionManager
+from dbx_module.utils.SparkReadHandler import SparkReadHandler as readHandler
 from pyspark.sql.functions import *
 
 
 class AccountsDim:
     def __init__(self):
-        self.spark = SparkSessionManager(self.__class__.__name__).create_session()
+        self.spark = SparkSessionManager("databricks-app").create_session(type="databricks")
+        #self.spark = SparkSessionManager(self.__class__.__name__).create_session(type="databricks")
         self.logger = Logger(self.__class__.__name__)
-        self.config = readHandler().read_json("./resources/config/accounts-dim.json")
+        self.config = readHandler().read_json("/Workspace/Users/brijeshdhaker@gmail.com/configs/json/accounts-dim.json")
 
     def etl(self):
         source_path = self.config.get("source_table")

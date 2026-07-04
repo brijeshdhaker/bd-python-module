@@ -1,10 +1,9 @@
 import re
-
 from pyspark.sql.functions import concat_ws, when, concat, lit, length, to_date
+from dbx_module.utils.SparkSessionManager import SparkSessionManager
 
-from com.example.utils.SparkSessionManager import SparkSessionManager
-
-spark = SparkSessionManager("test").create_session()
+#
+spark = SparkSessionManager("databricks-app").create_session(type="databricks")
 
 
 def _read_csv(path):
@@ -28,9 +27,19 @@ def _add_metadata_columns(df, file):
 
     return df
 
+#################### Create Source dataset @silver layer #############
+path = "/Volumes/workspace/bronze/customers/customers_20240101090909.csv"
+file = path.split("/")[-1]
+df = _read_csv(path)
+df = _add_metadata_columns(df, file)
+
+df.show()
+
+df.write.format("delta").mode("overwrite").partitionBy('year', 'month', 'day').saveAsTable("workspace.silver.customers")
+#df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("/Volumes/workspace/silver/customers/")
 
 #################### Create Target dataset @Gold layer #############
-path = "./resources/datasets/bronze/customers/customers_20240101070707.csv"
+path = "/Volumes/workspace/bronze/customers/customers_20240101070707.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
@@ -43,14 +52,6 @@ df = df.withColumn("eff_start_date", to_date(lit("2023-02-02"))) \
 
 df.show()
 
-df.write.partitionBy('date_id').mode('overwrite').parquet("./resources/datasets/gold/customers/")
+#df.write.partitionBy('date_id').mode('overwrite').parquet("/Volumes/workspace/gold/customers/")
+df.write.format("delta").mode("overwrite").partitionBy('date_id').saveAsTable("workspace.gold.customers")
 
-#################### Create Source dataset @silver layer #############
-path = "./resources/datasets/bronze/customers/customers_20240101090909.csv"
-file = path.split("/")[-1]
-df = _read_csv(path)
-df = _add_metadata_columns(df, file)
-
-df.show()
-
-df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("./resources/datasets/silver/customers/")

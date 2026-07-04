@@ -1,22 +1,20 @@
-from com.example.utils.SparkSessionManager import SparkSessionManager
+from dbx_module.utils.SparkSessionManager import SparkSessionManager
 
 #
-spark = SparkSessionManager("test").create_session()
+spark = SparkSessionManager("databricks-app").create_session(type="databricks")
 
 spark.sql("select * from bank_str1").show()
-
 spark.sql("select * from bank_str2").show()
-
 
 table_ddl = """
 CREATE TABLE bank_str2 (
- transaction_id long 
-,account_number long
-,amount long
-,transaction_type string
-,customer_id string
-,name string)
-USING DELTA 
+ transaction_id long,
+ account_number long,
+ amount long,
+ transaction_type string,
+ customer_id string,
+ name string
+) USING DELTA 
 PARTITIONED BY (date_id string)
 LOCATION './datasets/gold/bank'
 """

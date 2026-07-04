@@ -146,6 +146,9 @@ databricks apps delete dqx-studio --profile databricks-cli
 databricks workspace import --file ./app/resources/dqx/config.yml /Workspace/Applications/dqx/config.yml --format AUTO --overwrite
 
 #
+databricks fs ls dbfs:/
+databricks fs ls dbfs:/databricks-datasets/nyctaxi
+databricks fs ls dbfs:/databricks-datasets/nyctaxi-with-zipcodes
 databricks fs cp app/resources/dqx/rules/ dbfs:/Volumes/workspace/raw/rules/ --recursive
 
 #

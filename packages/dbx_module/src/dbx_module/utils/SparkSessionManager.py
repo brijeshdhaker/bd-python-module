@@ -72,8 +72,8 @@ class SparkSessionManager:
             # Python version on serverless 
             # 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]
             from databricks.connect import DatabricksSession
-            # spark = DatabricksSession.builder.serverless().profile("databricks-cli").getOrCreate()
-            spark = DatabricksSession.builder.getOrCreate()
+            spark = DatabricksSession.builder.serverless().profile("databricks-cli").getOrCreate()
+            #spark = DatabricksSession.builder.profile("databricks-cli").getOrCreate()
             
             #
             return spark

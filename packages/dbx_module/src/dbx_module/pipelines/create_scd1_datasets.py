@@ -2,9 +2,9 @@ import re
 
 from pyspark.sql.functions import concat_ws, when, concat, lit, length
 
-from com.example.utils.SparkSessionManager import SparkSessionManager
+from dbx_module.utils.SparkSessionManager import SparkSessionManager
 
-spark = SparkSessionManager("test").create_session()
+spark = SparkSessionManager("databricks-app").create_session(type="databricks")
 
 
 def _read_csv(path):
@@ -28,9 +28,20 @@ def _add_metadata_columns(df, file):
 
     return df
 
+#################### Create Source dataset @silver layer #############
+path = "/Volumes/workspace/raw/bronze/accounts/accounts_20240101080808.csv"
+file = path.split("/")[-1]
+df = _read_csv(path)
+df = _add_metadata_columns(df, file)
+
+df.show()
+
+df.write.format("delta").mode("overwrite").partitionBy('year', 'month', 'day').saveAsTable("workspace.silver.accounts")
+#df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("./datasets/silver/accounts/")
+
 
 #################### Create Target dataset @Gold layer #############
-path = "./resources/datasets/bronze/accounts/accounts_20240101060606.csv"
+path = "/Volumes/workspace/raw/bronze/accounts/accounts_20240101060606.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
@@ -40,14 +51,9 @@ df = df.withColumn("date_id", concat_ws("-", "year", "month", "day")) \
 
 df.show()
 
-df.write.partitionBy('date_id').mode('overwrite').parquet("./resources/datasets/gold/accounts/")
+#df.writeTo("spark_catalog.deltalake.delta_table").createOrReplace()
 
-#################### Create Source dataset @silver layer #############
-path = "./resources/datasets/bronze/accounts/accounts_20240101080808.csv"
-file = path.split("/")[-1]
-df = _read_csv(path)
-df = _add_metadata_columns(df, file)
+df.write.format("delta").mode("overwrite").partitionBy('date_id').saveAsTable("workspace.gold.accounts")
 
-df.show()
+#df.write.partitionBy('date_id').mode('overwrite').parquet("workspace.gold.accounts")
 
-df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("./resources/datasets/silver/accounts/")
