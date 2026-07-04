@@ -5,6 +5,7 @@
 # Using Confluent Python Client for Apache Kafka
 #
 # =============================================================================
+import os
 import json
 from core_module.models.Transaction import Transaction
 from core_module.utils.AvroUtils import load_avro_json
@@ -15,9 +16,9 @@ from os.path import expanduser
 from pathlib import Path
 from time import sleep
 
-AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro",
-                 "transaction-record.avsc")
-key_schema, value_schema = load_avro_json(AVRO_PATH)
+#AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro", "transaction-record.avsc")
+AVRO_PATH = os.environ['WORK_DIR']
+key_schema, value_schema = load_avro_json(f'{AVRO_PATH}/conf/avro/transaction-record.avsc')
 #
 #
 #
@@ -35,7 +36,7 @@ value_serializer = lambda v: json.dumps(v).encode('utf-8')
 
 # Create Producer instance
 producer = KafkaProducer(
-    bootstrap_servers='kafka-broker.sandbox.net:9092',
+    bootstrap_servers='kafkabroker.sandbox.net:9092',
     client_id='kafka_python_avro_producer-client',
     key_serializer=key_serializer,
     value_serializer=avroValueSerializer,

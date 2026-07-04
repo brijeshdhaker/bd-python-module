@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # Read arguments and configurations and initialize
     topic = "transaction-avro-topic"
     producer_config = KafkaConfigFactory.producer('PLAINTEXT')
-    avroProducer = ProducerFactory.avro(producer_config,"resources/avro/transaction-record.avsc")
+    avroProducer = ProducerFactory.avro(producer_config,"conf/avro/transaction-record.avsc")
 
     u_names = ["Brijesh K", "Neeta K", "Keshvi K", "Tejas K"]
 

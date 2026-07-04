@@ -1,3 +1,4 @@
+import os
 from kafka import KafkaConsumer
 from fastavro import schemaless_reader, parse_schema
 from io import BytesIO
@@ -12,9 +13,10 @@ each iteration. This will give you at-least-once behaviour as the latest process
 kafka before each iteration meaning that in the event of a failure the consumer will restart from the last comitted 
 offset which may not be the latest message that was successfully processed.
 """
-AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro",
-                 "transaction-record.avsc")
-key_schema, value_schema = load_avro_json(AVRO_PATH)
+# AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro","transaction-record.avsc")
+
+AVRO_PATH = os.environ['WORK_DIR']
+key_schema, value_schema = load_avro_json(f'{AVRO_PATH}/conf/avro/transaction-record.avsc')
 
 key_deserializer = lambda k: k.decode("utf-8")
 
@@ -37,7 +39,7 @@ TOPIC = "kafka-avro-topic"
 MIN_COMMIT_COUNT = 10
 
 consumer = KafkaConsumer(
-    bootstrap_servers='kafka-broker.sandbox.net:9092',
+    bootstrap_servers='kafkabroker.sandbox.net:9092',
     client_id='kafka_python_avro_consumer-client',
     group_id='kafka_python_avro_consumer-cg',
     key_deserializer=key_deserializer,

@@ -25,6 +25,7 @@ import fastavro
 #
 # =============================================================================
 import io
+import os
 from avro.io import DatumReader, BinaryDecoder
 from core_module.utils.AvroUtils import load_avro_schema, load_avro_str
 from confluent_kafka import Consumer
@@ -34,11 +35,11 @@ if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
     topic = "users-topic"
-    BASE_DIR = "/home/brijeshdhaker/IdeaProjects/bd-pyspark-module/src/main/py/"
-    key_schema, value_schema = load_avro_schema(BASE_DIR + 'resources/avro/user-record.avsc')
-    key_schema_str, value_schema_str = load_avro_str(BASE_DIR + 'resources/avro/user-record.avsc')
+    BASE_DIR = os.environ['WORK_DIR']
+    key_schema, value_schema = load_avro_schema(BASE_DIR + 'conf/avro/user-record.avsc')
+    key_schema_str, value_schema_str = load_avro_str(BASE_DIR + 'conf/avro/user-record.avsc')
 
-    schema = avro.schema.parse(open(BASE_DIR + 'resources/avro/user-record.avsc').read())
+    schema = avro.schema.parse(open(BASE_DIR + 'conf/avro/user-record.avsc').read())
 
     reader = DatumReader(schema)
     def avro_decode(raw_bytes):
@@ -59,7 +60,7 @@ if __name__ == '__main__':
 
     # Report malformed record, discard results, continue polling
     avro_consumer = Consumer({
-        'bootstrap.servers': 'thinkpad:9092',
+        'bootstrap.servers': 'kafkabroker.sandbox.net:19093',
         'group.id': 'python-avro-cg',
         'auto.offset.reset': 'earliest'
     })

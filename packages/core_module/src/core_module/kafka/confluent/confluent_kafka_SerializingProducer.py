@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# confluent_kafka_SerializingProducer.py -b kafka-broker.sandbox.net:9092 -s http://schema-registry:8081 -t test-avro-topic
+# confluent_kafka_SerializingProducer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry:8081 -t test-avro-topic
 #
 #
 # This is a simple example of the SerializingProducer using Avro.
@@ -20,7 +20,7 @@ def serializer_sink(args):
 
     topic = args['topic']
     producer_conf = KafkaConfigFactory.producer(args['auth_type'])
-    producer = ProducerFactory.serializer(producer_conf,"resources/avro/user-record.avsc", User.to_dict)
+    producer = ProducerFactory.serializer(producer_conf,"conf/avro/user-record.avsc", User.to_dict)
 
     #
     print("Producing user records to topic {}. ^C to exit.".format(topic))

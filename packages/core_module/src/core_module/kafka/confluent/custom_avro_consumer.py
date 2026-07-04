@@ -22,6 +22,7 @@
 # Reads Avro data, integration with Confluent Cloud Schema Registry
 #
 # =============================================================================
+import os
 import io
 from avro.io import DatumReader, BinaryDecoder
 from core_module.utils.AvroUtils import load_avro_schema
@@ -32,8 +33,8 @@ if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
     topic = "kafka-avro-topic"
-    BASE_DIR = "/home/brijeshdhaker/IdeaProjects/spark-bigdata-examples/"
-    key_schema, value_schema = load_avro_schema(BASE_DIR + 'resources/avro/user-record.avsc')
+    BASE_DIR = os.environ['WORK_DIR']
+    key_schema, value_schema = load_avro_schema(BASE_DIR + '/conf/avro/user-record.avsc')
 
     reader = DatumReader(value_schema)
     def decode(msg_value):
@@ -46,7 +47,7 @@ if __name__ == '__main__':
 
     # Report malformed record, discard results, continue polling
     avro_consumer = Consumer({
-        'bootstrap.servers': 'kafka-broker.sandbox.net:9092',
+        'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
         'group.id': 'python-custom-cg',
         'auto.offset.reset': 'earliest'
     })

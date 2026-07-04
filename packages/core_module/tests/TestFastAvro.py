@@ -45,7 +45,7 @@ class TestFastAvro(unittest.TestCase):
         self.assertEqual(data['time'], 1433269388)
         self.assertEqual(data['temp'], 0)
         """ 
-        with open('./resources/avro/weather.avro', 'wb') as fp:
+        with open('conf/avro/weather.avro', 'wb') as fp:
             record = schemaless_reader(rb, parsed_schema)
             print(record)
         """

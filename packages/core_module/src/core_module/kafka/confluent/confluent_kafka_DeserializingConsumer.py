@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# confluent_kafka_DeserializingConsumer.py -b kafka-broker.sandbox.net:9092 -s http://schema-registry:8081 -t test-avro-topic -g test-avro-cg
+# confluent_kafka_DeserializingConsumer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry:8081 -t test-avro-topic -g test-avro-cg
 #
 
 from core_module.models.User import User
@@ -17,7 +17,7 @@ def serializer_source(args):
 
     topic = args["topic"]
     consumer_conf = KafkaConfigFactory.consumer(args["auth_type"])
-    consumer = ConsumerFactory.serializer(consumer_conf,"resources/avro/user-record.avsc", User.to_obj)
+    consumer = ConsumerFactory.serializer(consumer_conf,"conf/avro/user-record.avsc", User.to_obj)
 
     consumer.subscribe([topic])
     while True:
