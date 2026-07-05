@@ -22,7 +22,7 @@ key_schema, value_schema = load_avro_json(f'{AVRO_PATH}/conf/avro/transaction-re
 #
 #
 #
-TOPIC = "kafka-avro-topic"
+TOPIC = "transaction-avro-topic"
 
 def avroValueSerializer(raw_value):
     rb = BytesIO()
@@ -37,7 +37,7 @@ value_serializer = lambda v: json.dumps(v).encode('utf-8')
 # Create Producer instance
 producer = KafkaProducer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_python_avro_producer-client',
+    client_id='transaction_avro_producer',
     key_serializer=key_serializer,
     value_serializer=avroValueSerializer,
     acks=1

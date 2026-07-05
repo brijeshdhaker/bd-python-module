@@ -35,13 +35,13 @@ def confluentAvroValueDeSerializer(raw_bytes):
     return record
 
 RUNNING = True
-TOPIC = "kafka-avro-topic"
+TOPIC = "transaction-avro-topic"
 MIN_COMMIT_COUNT = 10
 
 consumer = KafkaConsumer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_python_avro_consumer-client',
-    group_id='kafka_python_avro_consumer-cg',
+    client_id='transaction_avro_consumer',
+    group_id='transaction_avro_pycg',
     key_deserializer=key_deserializer,
     value_deserializer=avroValueDeSerializer
 )

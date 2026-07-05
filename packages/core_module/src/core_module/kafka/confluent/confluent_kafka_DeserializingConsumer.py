@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# confluent_kafka_DeserializingConsumer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry:8081 -t test-avro-topic -g test-avro-cg
+# confluent_kafka_DeserializingConsumer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry.sandbox.net:8081 -t user-avro-topic -g test-avro-cg
 #
 
 from core_module.models.User import User
@@ -39,7 +39,7 @@ def serializer_source(args):
 
 if __name__ == '__main__':
     args = {
-        'topic': "kafka-avro-topic",
+        'topic': "user-avro-topic",
         'auth_type': "PLAINTEXT"
     }
     serializer_source(args)

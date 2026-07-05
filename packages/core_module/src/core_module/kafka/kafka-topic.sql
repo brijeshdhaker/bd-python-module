@@ -1,20 +1,6 @@
 ---
 --- Add User
 ---
-CREATE USER 'brijeshdhaker'@'%' IDENTIFIED BY 'Accoo7@k47';
-GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'brijeshdhaker'@'%' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON *.* TO 'superuser'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
-
-SHOW GRANTS FOR 'brijeshdhaker'@'%';
----
-
-
-create database SANDBOXDB;
-
-SHOW DATABASES;
-
-USE SANDBOXDB;
 
 show tables;
 

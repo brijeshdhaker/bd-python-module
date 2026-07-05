@@ -1,5 +1,6 @@
+import os
 from core_module.utils.AvroUtils import load_avro_json
-from confluent_kafka.avro import SerializerError
+from confluent_kafka.avro.serializer import SerializerError
 from fastavro import schemaless_reader, parse_schema
 from io import BytesIO
 from kafka import KafkaConsumer
@@ -12,10 +13,10 @@ each iteration. This will give you at-least-once behaviour as the latest process
 kafka before each iteration meaning that in the event of a failure the consumer will restart from the last comitted 
 offset which may not be the latest message that was successfully processed.
 """
-AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro",
-                 "transaction-record.avsc")
-key_schema, value_schema = load_avro_json(AVRO_PATH)
 
+# AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro","transaction-record.avsc")
+AVRO_PATH = os.environ['WORK_DIR']
+key_schema, value_schema = load_avro_json(f'{AVRO_PATH}/conf/avro/transaction-record.avsc')
 key_deserializer = lambda k: k.decode("utf-8")
 
 
@@ -31,13 +32,13 @@ def avroValueDeSerializer(raw_bytes):
 
 
 RUNNING = True
-TOPIC = "txn-avro-stream-topic"
+TOPIC = "transaction-avro-topic"
 MIN_COMMIT_COUNT = 10
 
 consumer = KafkaConsumer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_python_avro_consumer-client',
-    group_id='kafka_python_avro_consumer-cg',
+    client_id='transaction_avro_consumer',
+    group_id='transaction_avro_consumer_pycg',
     key_deserializer=key_deserializer,
     value_deserializer=avroValueDeSerializer
 )

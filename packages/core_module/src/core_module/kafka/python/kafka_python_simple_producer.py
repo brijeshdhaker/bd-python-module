@@ -12,7 +12,7 @@ from time import sleep
 #
 #
 #
-TOPIC = "simple-text-topic"
+TOPIC = "transaction-text-topic"
 
 #
 # Create Producer instance
@@ -22,7 +22,7 @@ value_serializer = lambda v: v.encode('utf-8')
 
 producer = KafkaProducer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_simple_producer',
+    client_id='transaction_text_producer',
     key_serializer=key_serializer,
     value_serializer=value_serializer,
     acks=1

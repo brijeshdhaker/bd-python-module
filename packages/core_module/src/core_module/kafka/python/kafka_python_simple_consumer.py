@@ -8,7 +8,7 @@ offset which may not be the latest message that was successfully processed.
 """
 
 RUNNING = True
-TOPIC = "simple-text-topic"
+TOPIC = "transaction-text-topic"
 MIN_COMMIT_COUNT = 10
 
 def str_deserializer(str):
@@ -23,8 +23,8 @@ value_deserializer = lambda v: v.decode("utf-8")
 
 consumer = KafkaConsumer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_simple_consumer',
-    group_id='kafka_simple_cg',
+    client_id='transaction_text_consumer',
+    group_id='transaction_text_pycg',
     key_deserializer=str_deserializer,
     value_deserializer=str_deserializer,
     auto_offset_reset='earliest',

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# confluent_kafka_SerializingProducer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry:8081 -t test-avro-topic
+# confluent_kafka_SerializingProducer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry.sandbox.net:8081 -t user-avro-topic
 #
 #
 # This is a simple example of the SerializingProducer using Avro.
@@ -50,7 +50,7 @@ if __name__ != '__main__':
     pass
 else:
     args = {
-        'topic': "kafka-avro-topic",
+        'topic': "user-avro-topic",
         'auth_type': "PLAINTEXT"
     }
     serializer_sink(args)
