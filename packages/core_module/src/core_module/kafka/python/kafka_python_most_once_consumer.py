@@ -10,7 +10,7 @@ process them. This will ensure that messages are never processed more than once.
 unexpectedly exits after comitting but before finishing processing every message in a batch, the unprocessed messages 
 will be lost.
 
-docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --from-beginning --max-messages 100
+docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic simple-text-topic --from-beginning --max-messages 100
 
 """
 

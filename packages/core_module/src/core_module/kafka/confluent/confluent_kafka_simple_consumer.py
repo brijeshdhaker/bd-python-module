@@ -1,14 +1,14 @@
 import sys
 from confluent_kafka import KafkaException, KafkaError
 
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ConsumerFactory import ConsumerFactory
-from .confluent_kafka_usecase import msg_process
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ConsumerFactory import ConsumerFactory
+from core_module.kafka.confluent.confluent_kafka_usecase import msg_process
 
 #
 #
 #
-TOPIC = "kafka-simple-topic"
+TOPIC = "simple-text-topic"
 
 #
 #     'enable.auto.commit': False,

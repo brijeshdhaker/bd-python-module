@@ -68,7 +68,7 @@
 #
 services:
   
-  #
+  ## devcontainer 
   devcontainer:
     image: mcr.microsoft.com/devcontainers/miniconda:1-3
     build:
@@ -150,7 +150,7 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
-      KAFKA_CREATE_TOPICS: "simple-topic:1:1"
+      KAFKA_CREATE_TOPICS: "simple-text-topic:1:1"
       # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $2}'"
     extra_hosts:
       - "docker.sandbox.net:172.18.0.1"

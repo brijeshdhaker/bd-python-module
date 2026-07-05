@@ -33,8 +33,8 @@ class ConsumerFactory(object):
     def simple(consumer_config):
         string_deserializer = StringDeserializer('utf_8')
         consumer_config.update({
-            'key.deserializer': string_deserializer,
-            'value.deserializer': string_deserializer,
+            #'key.deserializer': string_deserializer,
+            #'value.deserializer': string_deserializer,
             'group.id': 'kafka_simple_cg'
         })
         consumer = Consumer(consumer_config)

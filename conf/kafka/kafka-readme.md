@@ -9,10 +9,11 @@ docker compose -f docker-compose.yml exec kafkaclient sh -c "kafkacat -V"
 ## Topic - Actions :
 docker compose -f docker-compose.yml exec kafkabroker /bin/bash
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic simple-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-partitioned-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-avro-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic simple-text-topic --if-not-exists
+
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic partitioned-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic partitioned-avro-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic partitioned-json-topic --if-not-exists
 
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-csv-topic --if-not-exists
@@ -21,6 +22,7 @@ kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitio
 
 # Topic - Create
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
+
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-json-topic --if-not-exists"
 
 # Topic - List
@@ -29,18 +31,22 @@ docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-topics --list
 
 # Topic - Describe
 kafka-topics --describe --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092
+
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-topics --describe --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Alter
 kafka-topics --alter --topic transaction-avro-topic --partitions 3 --bootstrap-server kafkabroker.sandbox.net:9092
+
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-topics --alter --topic transaction-avro-topic --partitions 3 --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Delete
 kafka-topics --delete --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092
+
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-topics --delete --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Check Retention period
-docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name simple-topic --describe "
+docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name simple-text-topic --describe "
+
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
 
 confluent.tier.local.hotset.ms=86400000
@@ -64,7 +70,7 @@ docker run -it --rm \
 --volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -P -b kafkabroker.sandbox.net:19093 -t simple-topic \
+kafkacat -P -b kafkabroker.sandbox.net:19093 -t simple-text-topic \
 -X 'security.protocol=SASL_SSL' \
 -X 'sasl.mechanisms=GSSAPI' \
 -X 'sasl.kerberos.service.name=kafka' \
@@ -79,13 +85,13 @@ kafkacat -P -b kafkabroker.sandbox.net:19093 -t simple-topic \
 
 
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-console-producer \
---topic simple-topic \
+--topic simple-text-topic \
 --broker-list kafkabroker.sandbox.net:9092"
 
 #### With Key
 #### Note : \t is default key seperator
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-console-producer \
---topic simple-topic \
+--topic simple-text-topic \
 --broker-list kafkabroker.sandbox.net:9092 \
 --producer.config /apps/configs/kafka/client_plaintext.config \
 --property parse.key=true \
@@ -101,20 +107,20 @@ docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-console-produ
 ```bash
 
 docker compose -f docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic simple-topic \
+--topic simple-text-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config "/apps/configs/kafka/client_plaintext.config" \
 --property "print.key=true"
 
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic simple-topic \
+--topic simple-text-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/client_plaintext.config \
 --timeout-ms 5000 2>/dev/null"
 
 #
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic simple-topic \
+--topic simple-text-topic \
 --bootstrap-server kafkabroker.sandbox.net:19092 \
 --consumer.config /apps/configs/kafka/client_plaintext.config \
 --offset 0 \
@@ -124,7 +130,7 @@ docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-console-cons
 --timeout-ms 5000 2>/dev/null"
 
 docker compose -f  docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic simple-topic \
+--topic simple-text-topic \
 --group kafka-simple-cg \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/client_plaintext.config \
@@ -139,7 +145,7 @@ docker run -it --rm \
 --volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -C -b kafkabroker.sandbox.net:19093 -t simple-topic -o beginning \
+kafkacat -C -b kafkabroker.sandbox.net:19093 -t simple-text-topic -o beginning \
 -K '\t' \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e \
 -X 'security.protocol=SASL_SSL' \
@@ -161,7 +167,7 @@ docker run -it --rm \
 --volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -C -t simple-topic -o beginning \
+kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -C -t simple-text-topic -o beginning \
 -K '\t' \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 

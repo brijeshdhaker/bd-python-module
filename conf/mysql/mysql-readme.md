@@ -3,14 +3,10 @@
 
 mysql --user=root --password=paSSW0rd 
 mysql --user=root --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
-mysql --user=hiveadmin --password=hiveadmin --host=mysqlserver.sandbox.net --database=HMS334
 
 docker exec -it mysqlserver sh -c 'mysql --user=root --password=$MYSQL_ADMIN_PASSWORD'
-docker exec -it mysqlserver mysql --user=root --password=paSSW0rd
-
 docker exec -it mysqlserver mysql --user=root --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
-docker exec -it mysqlserver mysql --user=admin --password=password --host=mysqlserver.sandbox.net --database=SANDBOXDB
-docker exec -it mysqlserver mysql --user=mysqladmin --password=mysqladmin --host=mysqlserver.sandbox.net --database=SANDBOXDB
+docker exec -it mysqlserver mysql --user=admin --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
 
 ```
 
@@ -20,8 +16,8 @@ docker exec -it mysqlserver mysql --user=mysqladmin --password=mysqladmin --host
 CREATE USER 'root'@'%' IDENTIFIED BY 'paSSW0rd';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 
-CREATE USER 'mysqladmin'@'%' IDENTIFIED BY 'paSSW0rd';
-GRANT ALL PRIVILEGES ON *.* TO 'mysqladmin'@'%' WITH GRANT OPTION;
+CREATE USER 'admin'@'%' IDENTIFIED BY 'paSSW0rd';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
 
 CREATE DATABASE SANDBOXDB;
 USE SANDBOXDB;
@@ -57,30 +53,36 @@ FLUSH PRIVILEGES;
 
 ```
 #
-# Setup ICEBERG Catalog Database
+# Setup Database
 #
 ```sql
 
 CREATE DATABASE SANDBOXDB;
+CREATE DATABASE NEETASTUDIO;
+CREATE DATABASE ICEBERG;
+CREATE DATABASE HMS334;
+
 USE SANDBOXDB;
 
 ```
 
 ## Clone Schema 
 ```sql
-
-CREATE DATABASE HMS334;
 mysqldump -u root --password=$MYSQL_ADMIN_PASSWORD metastore | mysql --user=root --password=$MYSQL_ADMIN_PASSWORD HMS334
+
 ```
 
 ## Creating database dumps
 ```bash
 
-mysqldump --user=root --password=paSSW0rd --routines --triggers --databases ICEBERG_CATALOG >> /apps/sandbox/mysql/ICEBERG_CATALOG.sql 
+mysqldump --user=root --password=paSSW0rd --routines --triggers --databases ICEBERG_CATALOG >> /apps/sandbox/mysql/ICEBERG_CATALOG.sql
+ 
 mysqldump --user=root --password=paSSW0rd --routines --triggers --databases NEETASTUDIO >> /apps/sandbox/mysql/NEETASTUDIO.sql
 
 docker exec mysqlserver sh -c 'mysqldump --user=root --password=$MYSQL_ADMIN_PASSWORD --routines --triggers --all-databases' > /apps/sandbox/mysql/all-databases.sql
+
 docker exec mysqlserver sh -c 'mysqldump --user=root --password=$MYSQL_ADMIN_PASSWORD --routines --triggers --databases NEETASTUDIO' > /apps/sandbox/mysql/NEETASTUDIO.sql
+
 docker exec mysqlserver sh -c 'mysqldump --user=root --password=paSSW0rd --routines --triggers --databases NEETASTUDIO >> /apps/sandbox/mysql/NEETASTUDIO.sql' > /some/path/on/your/host/all-databases.sql
 
 ```

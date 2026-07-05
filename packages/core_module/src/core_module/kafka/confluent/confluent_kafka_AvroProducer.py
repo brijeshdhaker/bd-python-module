@@ -11,8 +11,8 @@ from datetime import datetime
 from time import sleep
 from uuid import uuid4
 from core_module.models.Transaction import Transaction
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ProducerFactory import ProducerFactory
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ProducerFactory import ProducerFactory
 
 
 #

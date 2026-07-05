@@ -2,7 +2,7 @@
 #
 #
 
-from .confluent_kafka_usecase import commit_report, delivery_report
+from core_module.kafka.confluent.confluent_kafka_usecase import commit_report, delivery_report
 
 import socket
 #

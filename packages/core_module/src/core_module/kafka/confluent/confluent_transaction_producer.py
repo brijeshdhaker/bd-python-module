@@ -44,7 +44,7 @@ def sink_transaction(args):
 
 if __name__ == '__main__':
     args = {
-        'topic': "spark-text-txn-topic",
+        'topic': "transaction-text-topic",
         'auth_type': "PLAINTEXT"
     }
     sink_transaction(args)

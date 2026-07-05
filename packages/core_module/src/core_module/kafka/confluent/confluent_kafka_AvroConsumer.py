@@ -1,7 +1,7 @@
 from confluent_kafka.avro.serializer import SerializerError
 
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ConsumerFactory import ConsumerFactory
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ConsumerFactory import ConsumerFactory
 
 consumer_config = KafkaConfigFactory.consumer('PLAINTEXT')
 consumer = ConsumerFactory.avro(consumer_config)

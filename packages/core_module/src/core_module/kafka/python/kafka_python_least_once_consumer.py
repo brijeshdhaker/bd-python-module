@@ -5,7 +5,7 @@ from kafka import KafkaConsumer, OffsetAndMetadata
 An at-least-once consumer commits the offsets to kafka only after finishing storing all of results of processing the 
 message. This will result in occasional reprocessing of the same messages.
 
-docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --from-beginning --max-messages 100
+docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic simple-text-topic --from-beginning --max-messages 100
 
 """
 

@@ -8,7 +8,7 @@ offset which may not be the latest message that was successfully processed.
 """
 
 RUNNING = True
-TOPIC = "kafka-simple-topic"
+TOPIC = "simple-text-topic"
 MIN_COMMIT_COUNT = 10
 
 def str_deserializer(str):

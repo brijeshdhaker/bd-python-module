@@ -29,7 +29,7 @@ import os
 from avro.io import DatumReader, BinaryDecoder
 from core_module.utils.AvroUtils import load_avro_schema, load_avro_str
 from confluent_kafka import Consumer
-from confluent_kafka.avro import SerializerError
+from confluent_kafka.avro.serializer import SerializerError
 
 if __name__ == '__main__':
 

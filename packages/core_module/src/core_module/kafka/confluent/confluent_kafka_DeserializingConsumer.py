@@ -5,9 +5,8 @@
 #
 
 from core_module.models.User import User
-
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ConsumerFactory import ConsumerFactory
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ConsumerFactory import ConsumerFactory
 
 
 #

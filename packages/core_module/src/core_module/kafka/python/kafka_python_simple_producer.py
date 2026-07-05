@@ -12,7 +12,7 @@ from time import sleep
 #
 #
 #
-TOPIC = "kafka-simple-topic"
+TOPIC = "simple-text-topic"
 
 #
 # Create Producer instance

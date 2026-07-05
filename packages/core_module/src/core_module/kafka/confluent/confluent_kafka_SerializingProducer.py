@@ -9,8 +9,8 @@ from core_module.models.User import User
 from datetime import datetime
 from time import sleep
 
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ProducerFactory import ProducerFactory
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ProducerFactory import ProducerFactory
 
 
 #

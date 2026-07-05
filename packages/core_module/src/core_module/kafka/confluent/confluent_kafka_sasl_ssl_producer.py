@@ -7,13 +7,13 @@
 # =============================================================================
 from time import sleep
 import random
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ProducerFactory import ProducerFactory
-from .confluent_kafka_usecase import asynchronous_produce, delivered_records
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ProducerFactory import ProducerFactory
+from core_module.kafka.confluent.confluent_kafka_usecase import asynchronous_produce, delivered_records
 #
 #
 #
-TOPIC = "kafka-simple-topic"
+TOPIC = "simple-text-topic"
 
 # Create Producer instance
 producer_config = KafkaConfigFactory.producer('SASL_SSL')

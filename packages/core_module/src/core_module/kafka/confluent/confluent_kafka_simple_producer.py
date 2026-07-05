@@ -8,9 +8,9 @@
 import random
 from time import sleep
 
-from .confluent_kafka_ConfigFactory import KafkaConfigFactory
-from .confluent_kafka_ProducerFactory import ProducerFactory
-from .confluent_kafka_usecase import synchronous_produce
+from core_module.kafka.confluent.confluent_kafka_ConfigFactory import KafkaConfigFactory
+from core_module.kafka.confluent.confluent_kafka_ProducerFactory import ProducerFactory
+from core_module.kafka.confluent.confluent_kafka_usecase import synchronous_produce
 
 #
 #
@@ -19,10 +19,10 @@ from .confluent_kafka_usecase import synchronous_produce
 
 if __name__ == '__main__':
 
-    TOPIC = "kafka-simple-topic"
+    TOPIC = "simple-text-topic"
     # Create Producer instance
-    consumer_config = KafkaConfigFactory.consumer('PLAINTEXT')
-    producer = ProducerFactory.simple(consumer_config)
+    producer_config = KafkaConfigFactory.producer('PLAINTEXT')
+    producer = ProducerFactory.simple(producer_config)
     produced_records = 0
 
     while True:
