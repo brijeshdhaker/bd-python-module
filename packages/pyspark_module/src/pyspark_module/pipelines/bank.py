@@ -1,9 +1,9 @@
 from core_module.utils.Logger import Logger
-from dbx_module.utils.DataReader import DataReader
-from dbx_module.utils.DataWriter import DataWriter
-from dbx_module.utils.SCDHandler import SCDHandler
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
-from dbx_module.utils.SparkReadHandler import SparkReadHandler as readHandler
+from pyspark_module.utils.DataReader import DataReader
+from pyspark_module.utils.DataWriter import DataWriter
+from pyspark_module.utils.SCDHandler import SCDHandler
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
+from pyspark_module.utils.SparkReadHandler import SparkReadHandler as readHandler
 from pyspark.sql.functions import concat_ws
 import os
 from pathlib import Path

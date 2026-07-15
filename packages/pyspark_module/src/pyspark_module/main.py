@@ -1,7 +1,7 @@
 import argparse
 from databricks.sdk.runtime import spark
 #
-from dbx_module import taxis
+from pyspark_module import taxis
 
 # python -m databricks_dqx_app.main --catalog workspace --schema default
 # pywhl-main --catalog workspace --schema default

@@ -70,7 +70,7 @@ dist/databricks_tools_core-0.1.0-py3-none-any.whl
 uv pip install dist/core_module-0.1.0-py3-none-any.whl
 uv pip install dist/api_module-0.1.0-py3-none-any.whl
 uv pip install dist/app_module-0.1.0-py3-none-any.whl
-uv pip install dist/dbx_module-0.1.0-py3-none-any.whl
+uv pip install dist/pyspark_module-0.1.0-py3-none-any.whl
 uv pip install dist/dqx_module-0.1.0-py3-none-any.whl
 uv pip install dist/bd_python_module-0.1.0-py3-none-any.whl
 
@@ -106,11 +106,11 @@ python dist/bd_notebooks_module-1.0.0.zip --Host localhost --App hello_py
 
 ```bash
 
-Running pytest with args: ['-p', 'vscode_pytest', '--rootdir=/home/brijeshdhaker/IdeaProjects/bd-python-module', '/home/brijeshdhaker/IdeaProjects/bd-python-module/packages/dbx_module/tests/sample_taxis_test.py::test_find_all_taxis']
+Running pytest with args: ['-p', 'vscode_pytest', '--rootdir=/home/brijeshdhaker/IdeaProjects/bd-python-module', '/home/brijeshdhaker/IdeaProjects/bd-python-module/packages/pyspark_module/tests/sample_taxis_test.py::test_find_all_taxis']
 ============================= test session starts ==============================
 platform linux -- Python 3.12.13, pytest-9.1.0, pluggy-1.6.0
 rootdir: /home/brijeshdhaker/IdeaProjects/bd-python-module
-configfile: packages/dbx_module/pyproject.toml
+configfile: packages/pyspark_module/pyproject.toml
 plugins: anyio-4.14.0, langsmith-0.8.16
 
 ```

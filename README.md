@@ -454,7 +454,7 @@ uv build --all
 uv build --package core_module
 uv build --package api_module
 uv build --package app_module
-uv build --package dbx_module
+uv build --package pyspark_module
 uv build --package dqx_module
 
 uv build --all --no-sources

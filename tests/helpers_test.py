@@ -3,7 +3,7 @@
 import pytest
 from databricks.sql.client import Connection, List, Row
 from datetime import datetime
-from dbx_module.helpers import select_nyctaxi_trips
+from pyspark_module.helpers import select_nyctaxi_trips
 from unittest.mock import create_autospec
 
 

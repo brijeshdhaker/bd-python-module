@@ -21,15 +21,16 @@ dependencies = [
     "core_module",
     "api_module",
     "app_module",
-    "dbx_module",
+    "pyspark_module",
     "dqx_module", 
     "ai_module",
     "tqdm>=4,<5",
-    "ipython-sql>=0.5.0",
+    # "ipython-sql>=0.5.0",
     "ipywidgets>=8.1.8",
     "jupysql>=0.11.1",
-    "ipykernel>=7.2.0",
-    "nbformat>=5.10.4",
+    "duckdb-engine>=0.17.0",
+    "ipykernel>=7.3.0",
+    # "nbformat>=5.10.4"
 ]
 
 [dependency-groups]
@@ -66,7 +67,7 @@ Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 core_module = { workspace = true }
 api_module = { workspace = true }
 app_module = { workspace = true }
-dbx_module = { workspace = true }
+pyspark_module = { workspace = true }
 dqx_module = { workspace = true }
 ai_module = { workspace = true}
 
@@ -93,6 +94,28 @@ pythonpath = [
     "packages/core_module/src",
     "packages/app_module/src",
     "packages/api_module/src",
-    "packages/dbx_module/src",
+    "packages/pyspark_module/src",
     "packages/dqx_module/src"
 ]
+
+
+[tool.jupysql.SqlMagic]
+feedback = true
+autopandas = true
+
+# /home/brijeshdhaker/.jupysql/connections.ini
+[mysql]
+drivername = "mysql+pymysql"
+username = "admin"
+password = "paSSW0rd"
+host = "mysqlserver.sandbox.net"
+port = "3306"
+database = "SANDBOXDB"
+
+[postgres]
+drivername = "postgresql"
+username = "postgres"
+password = "paSSW0rd"
+host = "postgresql.sandbox.net"
+port = "5432"
+database = "sandboxdb"

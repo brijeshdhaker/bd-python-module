@@ -2,7 +2,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql.functions import concat_ws, md5, col, current_date, lit
 
 from core_module.utils.Logger import Logger
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
 
 
 class SCDHandler:

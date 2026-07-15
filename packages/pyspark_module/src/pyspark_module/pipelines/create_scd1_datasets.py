@@ -1,15 +1,16 @@
 import re
-from pyspark.sql.functions import concat_ws, when, concat, lit, length, to_date
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
 
-#
+from pyspark.sql.functions import concat_ws, when, concat, lit, length
+
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
+
 spark = SparkSessionManager("databricks-app").create_session(type="databricks")
 
 
 def _read_csv(path):
     df = spark.read.format("csv") \
         .option('header', "true") \
-        .option('delimiter', ",") \
+        .option('delimiter', "|") \
         .load(path)
     return df
 
@@ -28,30 +29,31 @@ def _add_metadata_columns(df, file):
     return df
 
 #################### Create Source dataset @silver layer #############
-path = "/Volumes/workspace/bronze/customers/customers_20240101090909.csv"
+path = "/Volumes/workspace/raw/bronze/accounts/accounts_20240101080808.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
 
 df.show()
 
-df.write.format("delta").mode("overwrite").partitionBy('year', 'month', 'day').saveAsTable("workspace.silver.customers")
-#df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("/Volumes/workspace/silver/customers/")
+df.write.format("delta").mode("overwrite").partitionBy('year', 'month', 'day').saveAsTable("workspace.silver.accounts")
+#df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("./datasets/silver/accounts/")
+
 
 #################### Create Target dataset @Gold layer #############
-path = "/Volumes/workspace/bronze/customers/customers_20240101070707.csv"
+path = "/Volumes/workspace/raw/bronze/accounts/accounts_20240101060606.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
 
-df = df.withColumn("eff_start_date", to_date(lit("2023-02-02"))) \
-       .withColumn("eff_end_date",  lit(None).cast("date")) \
-       .withColumn("flag",  lit(1)) \
-       .withColumn("date_id", concat_ws("-", "year", "month", "day")) \
-       .drop("year", "month", "day", "filename")
+df = df.withColumn("date_id", concat_ws("-", "year", "month", "day")) \
+    .drop("year", "month", "day", "filename")
 
 df.show()
 
-#df.write.partitionBy('date_id').mode('overwrite').parquet("/Volumes/workspace/gold/customers/")
-df.write.format("delta").mode("overwrite").partitionBy('date_id').saveAsTable("workspace.gold.customers")
+#df.writeTo("spark_catalog.deltalake.delta_table").createOrReplace()
+
+df.write.format("delta").mode("overwrite").partitionBy('date_id').saveAsTable("workspace.gold.accounts")
+
+#df.write.partitionBy('date_id').mode('overwrite').parquet("workspace.gold.accounts")
 

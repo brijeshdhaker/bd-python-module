@@ -2,7 +2,7 @@ uv pip install databricks-connect==17.3.* --python /home/brijeshdhaker/IdeaProje
 
 uv build --all
 
-uv build --package dbx_module
+uv build --package pyspark_module
 
 python -m ensurepip --upgrade
 

@@ -3,7 +3,7 @@ import os
 import re
 
 from core_module.utils.Logger import Logger
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
 
 from pyspark.sql.functions import *
 

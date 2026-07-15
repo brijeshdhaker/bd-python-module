@@ -1,8 +1,8 @@
 from core_module.utils.Logger import Logger
-from dbx_module.utils.DataWriter import write_output
-from dbx_module.utils.SCDHandler import SCDHandler
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
-from dbx_module.utils.SparkReadHandler import SparkReadHandler as readHandler
+from pyspark_module.utils.DataWriter import write_output
+from pyspark_module.utils.SCDHandler import SCDHandler
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
+from pyspark_module.utils.SparkReadHandler import SparkReadHandler as readHandler
 from pyspark.sql.functions import *
 
 class CustomersDim:

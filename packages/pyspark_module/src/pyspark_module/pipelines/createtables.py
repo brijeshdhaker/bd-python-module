@@ -1,4 +1,4 @@
-from dbx_module.utils.SparkSessionManager import SparkSessionManager
+from pyspark_module.utils.SparkSessionManager import SparkSessionManager
 
 #
 spark = SparkSessionManager("databricks-app").create_session(type="databricks")
